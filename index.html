@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07110f">
+  <meta name="description" content="Yohei Nakajima's build-in-public log: agents, tools, experiments, research, and occasional weirdness.">
+  <meta property="og:title" content="Yohei Nakajima — Build Log">
+  <meta property="og:description" content="VC by day. Builder by night. A chronological field log of agents, tools, experiments, and research.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yohei.me">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Yohei Nakajima — Build Log</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Yohei Nakajima",
+    "url": "https://yohei.me",
+    "sameAs": [
+      "https://x.com/yoheinakajima",
+      "https://github.com/yoheinakajima",
+      "https://untapped.vc"
+    ],
+    "jobTitle": "Venture capitalist and builder"
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#archive">Skip to project archive</a>
+
+  <div class="ambient" aria-hidden="true">
+    <span class="ambient__orb ambient__orb--one"></span>
+    <span class="ambient__orb ambient__orb--two"></span>
+    <span class="ambient__grid"></span>
+  </div>
+
+  <header class="site-header" id="top">
+    <div class="shell site-header__inner">
+      <a class="brand" href="#top" aria-label="Yohei build log home">
+        <span class="brand__mark" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </span>
+        <span class="brand__text">yohei<span>/build-log</span></span>
+      </a>
+
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="#featured">Featured</a>
+        <a href="#archive">Archive</a>
+        <a href="#about">About</a>
+      </nav>
+
+      <div class="header-links" aria-label="External links">
+        <a href="https://x.com/yoheinakajima" target="_blank" rel="noreferrer">X<span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/yoheinakajima" target="_blank" rel="noreferrer">GitHub<span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero shell" aria-labelledby="hero-title">
+      <div class="hero__copy">
+        <p class="status-line"><span class="status-dot" aria-hidden="true"></span>Building in public since 2020</p>
+        <h1 id="hero-title">VC by day.<br><span>Builder by night.</span></h1>
+        <p class="hero__lede">A chronological field log of agents, tools, experiments, research, and occasional weirdness.</p>
+        <div class="hero__actions">
+          <a class="button button--primary" href="#featured">See current work <span aria-hidden="true">↓</span></a>
+          <button class="button button--ghost" id="random-build" type="button">Surprise me <span aria-hidden="true">↗</span></button>
+        </div>
+      </div>
+
+      <div class="signal-map" aria-hidden="true">
+        <div class="signal-map__label">LIVE SIGNAL MAP</div>
+        <svg viewBox="0 0 540 430" role="presentation">
+          <defs>
+            <linearGradient id="signal-line" x1="0" x2="1">
+              <stop offset="0" stop-color="#7fffd4" stop-opacity="0.12"/>
+              <stop offset="0.55" stop-color="#7fffd4" stop-opacity="0.82"/>
+              <stop offset="1" stop-color="#f6c453" stop-opacity="0.45"/>
+            </linearGradient>
+            <filter id="soft-glow">
+              <feGaussianBlur stdDeviation="4" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+          <g class="signal-lines" fill="none" stroke="url(#signal-line)" stroke-width="1.3">
+            <path d="M75 335 C140 310 148 230 220 228 S320 258 374 173 S445 113 481 78"/>
+            <path d="M75 335 C134 350 200 355 251 312 S341 245 430 304"/>
+            <path d="M220 228 C247 180 247 124 205 75"/>
+            <path d="M374 173 C357 117 313 92 287 49"/>
+          </g>
+          <g class="signal-nodes" filter="url(#soft-glow)">
+            <circle cx="75" cy="335" r="7"/><circle cx="220" cy="228" r="8"/>
+            <circle cx="374" cy="173" r="10"/><circle cx="481" cy="78" r="6"/>
+            <circle cx="251" cy="312" r="5"/><circle cx="430" cy="304" r="7"/>
+            <circle cx="205" cy="75" r="5"/><circle cx="287" cy="49" r="4"/>
+          </g>
+          <g class="signal-rings" fill="none">
+            <circle cx="374" cy="173" r="32"/><circle cx="374" cy="173" r="54"/>
+            <circle cx="220" cy="228" r="27"/>
+          </g>
+          <g class="signal-text">
+            <text x="390" y="163">ACTIVEGRAPH</text>
+            <text x="90" y="356">BUILD LOG</text>
+            <text x="442" y="327">DISCOVERY</text>
+            <text x="235" y="221">AGENTS</text>
+          </g>
+        </svg>
+        <div class="signal-map__ticker"><span></span> agents · graphs · discovery · venture · art</div>
+      </div>
+
+      <div class="stats" aria-label="Build log statistics">
+        <div class="stat"><strong id="stat-builds">—</strong><span>public builds</span></div>
+        <div class="stat"><strong id="stat-years">—</strong><span>years building</span></div>
+        <div class="stat"><strong id="stat-topics">—</strong><span>topic trails</span></div>
+        <div class="stat stat--latest"><strong id="stat-latest">—</strong><span>latest signal</span></div>
+      </div>
+    </section>
+
+    <section class="featured section shell" id="featured" aria-labelledby="featured-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Currently transmitting</p>
+          <h2 id="featured-title">Featured work</h2>
+        </div>
+        <p class="section-heading__note">A live selection from the archive. The layout adapts to one, two, or three featured projects.</p>
+      </div>
+      <div class="featured-grid" id="featured-grid" data-count="0" aria-live="polite"></div>
+    </section>
+
+    <section class="archive section" id="archive" aria-labelledby="archive-title">
+      <div class="shell">
+        <div class="section-heading section-heading--archive">
+          <div>
+            <p class="eyebrow">The full field log</p>
+            <h2 id="archive-title">Build archive</h2>
+          </div>
+          <p class="section-heading__note">Search the entire public history, follow a topic trail, or jump to a year.</p>
+        </div>
+
+        <div class="filter-panel" aria-label="Project filters">
+          <label class="search-field" for="project-search">
+            <span class="search-field__icon" aria-hidden="true">⌕</span>
+            <span class="visually-hidden">Search projects</span>
+            <input id="project-search" type="search" autocomplete="off" placeholder="Search projects, ideas, and descriptions…">
+            <kbd>/</kbd>
+          </label>
+
+          <div class="filter-row">
+            <div class="category-chips" id="category-chips" aria-label="Filter by topic"></div>
+            <div class="filter-selects">
+              <label>
+                <span class="visually-hidden">Filter by year</span>
+                <select id="year-filter" aria-label="Filter by year"><option value="">All years</option></select>
+              </label>
+              <label>
+                <span class="visually-hidden">Filter by format</span>
+                <select id="format-filter" aria-label="Filter by format"><option value="">All formats</option></select>
+              </label>
+              <label>
+                <span class="visually-hidden">Sort projects</span>
+                <select id="sort-filter" aria-label="Sort projects">
+                  <option value="newest">Newest first</option>
+                  <option value="oldest">Oldest first</option>
+                  <option value="az">A–Z</option>
+                </select>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="archive-toolbar">
+          <p id="result-count" aria-live="polite">Loading the archive…</p>
+          <div class="view-toggle" role="group" aria-label="Project view">
+            <button type="button" data-view="grid" aria-pressed="true" title="Grid view">
+              <span class="visually-hidden">Grid view</span><span aria-hidden="true">▦</span>
+            </button>
+            <button type="button" data-view="list" aria-pressed="false" title="List view">
+              <span class="visually-hidden">List view</span><span aria-hidden="true">☷</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="project-archive" id="project-archive" data-view="grid" aria-live="polite"></div>
+        <div class="empty-state" id="empty-state" hidden>
+          <span aria-hidden="true">∅</span>
+          <h3>No signals found</h3>
+          <p>Try a broader search or clear the active filters.</p>
+          <button class="button button--ghost" id="clear-filters" type="button">Clear filters</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="about section shell" id="about" aria-labelledby="about-title">
+      <div class="about__card">
+        <p class="eyebrow">Why this exists</p>
+        <h2 id="about-title">Build to learn.<br>Share to compound.</h2>
+        <p>I’m an early-stage investor who builds software to explore ideas, understand emerging technology, and meet ambitious founders. This log is the trail of artifacts left behind.</p>
+        <div class="about__links">
+          <a href="https://untapped.vc" target="_blank" rel="noreferrer">Untapped Capital <span aria-hidden="true">↗</span></a>
+          <a href="https://x.com/yoheinakajima" target="_blank" rel="noreferrer">Follow on X <span aria-hidden="true">↗</span></a>
+          <a href="https://github.com/yoheinakajima" target="_blank" rel="noreferrer">Browse GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="about__aside" aria-hidden="true">
+        <span>SHIP</span><span>OBSERVE</span><span>LEARN</span><span>REPEAT</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell site-footer__inner">
+      <p>© <span id="current-year"></span> Yohei Nakajima</p>
+      <p>Built in public. Data synced from Airtable.</p>
+      <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
+    </div>
+  </footer>
+
+  <noscript>
+    <div class="noscript">JavaScript is required to load and filter the project archive.</div>
+  </noscript>
+
+  <script src="./app.js" defer></script>
+</body>
+</html>
