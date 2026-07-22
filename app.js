@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const BUILD_VERSION = '20260722.6';
+  const BUILD_VERSION = '20260722.7';
   const DATA_ROOT = new URL('./data/', document.baseURI);
   document.documentElement.dataset.build = BUILD_VERSION;
 
@@ -11,6 +11,7 @@
     category: '',
     format: '',
     year: '',
+    date: '',
     sort: 'newest',
   };
 
@@ -30,6 +31,8 @@
     currentYear: document.querySelector('#current-year'),
     filterDisclosure: document.querySelector('#filter-disclosure'),
     filterSummary: document.querySelector('#filter-summary'),
+    activityMap: document.querySelector('#activity-map'),
+    activitySelection: document.querySelector('#activity-selection'),
   };
 
   const categoryLabels = {
@@ -71,6 +74,7 @@
       if (state.category && !(project.categories || []).includes(state.category)) return false;
       if (state.format && !(project.formats || []).includes(state.format)) return false;
       if (state.year && !project.date.startsWith(state.year)) return false;
+      if (state.date && project.date !== state.date) return false;
       return true;
     });
 
@@ -111,6 +115,72 @@
           </div>
         </article>`;
     }).join('');
+  }
+
+  function isoDate(date) {
+    return date.toISOString().slice(0, 10);
+  }
+
+  function localDateLabel(value) {
+    const date = new Date(`${value}T12:00:00Z`);
+    return new Intl.DateTimeFormat('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+      timeZone: 'UTC',
+    }).format(date);
+  }
+
+  function activityLevel(count, maxCount) {
+    if (!count) return 0;
+    if (maxCount <= 1) return 2;
+    return Math.min(4, Math.max(1, Math.ceil((count / maxCount) * 4)));
+  }
+
+  function renderActivityMap() {
+    if (!elements.activityMap) return;
+    const counts = new Map();
+    for (const project of state.projects) counts.set(project.date, (counts.get(project.date) || 0) + 1);
+
+    const latestProject = [...state.projects].sort((a, b) => b.date.localeCompare(a.date))[0];
+    const today = new Date();
+    today.setUTCHours(12, 0, 0, 0);
+    const latestDate = latestProject ? new Date(`${latestProject.date}T12:00:00Z`) : today;
+    const end = latestDate > today ? latestDate : today;
+    end.setUTCDate(end.getUTCDate() + (6 - end.getUTCDay()));
+    const start = new Date(end);
+    start.setUTCDate(start.getUTCDate() - (52 * 7 - 1));
+    const maxCount = Math.max(1, ...counts.values());
+    const weeks = [];
+    const monthLabels = [];
+    let previousMonth = -1;
+
+    for (let week = 0; week < 52; week += 1) {
+      const days = [];
+      const weekStart = new Date(start);
+      weekStart.setUTCDate(start.getUTCDate() + week * 7);
+      const month = weekStart.getUTCMonth();
+      if (month !== previousMonth) {
+        monthLabels.push(`<span style="grid-column:${week + 1}">${weekStart.toLocaleString('en-US', { month: 'short', timeZone: 'UTC' })}</span>`);
+        previousMonth = month;
+      }
+      for (let day = 0; day < 7; day += 1) {
+        const date = new Date(weekStart);
+        date.setUTCDate(weekStart.getUTCDate() + day);
+        const value = isoDate(date);
+        const count = counts.get(value) || 0;
+        const selected = value === state.date;
+        const label = `${count} ${count === 1 ? 'build' : 'builds'} on ${localDateLabel(value)}`;
+        days.push(`<button class="activity__cell${selected ? ' is-selected' : ''}" type="button" data-activity-date="${value}" data-level="${activityLevel(count, maxCount)}" aria-pressed="${selected}" aria-label="${label}" title="${label}"></button>`);
+      }
+      weeks.push(`<div class="activity__week">${days.join('')}</div>`);
+    }
+
+    elements.activityMap.innerHTML = `
+      <div class="activity__months">${monthLabels.join('')}</div>
+      <div class="activity__days" aria-hidden="true"><span>Mon</span><span>Wed</span><span>Fri</span></div>
+      <div class="activity__weeks">${weeks.join('')}</div>`;
+    elements.activitySelection.textContent = state.date ? `${localDateLabel(state.date)} · click again to clear` : 'last 52 weeks';
   }
 
   function renderArchive() {
@@ -171,6 +241,7 @@
       Boolean(state.category),
       Boolean(state.format),
       Boolean(state.year),
+      Boolean(state.date),
       state.sort !== 'newest',
     ].filter(Boolean).length;
   }
@@ -186,6 +257,7 @@
     state.category = params.get('topic') || '';
     state.format = params.get('format') || '';
     state.year = params.get('year') || '';
+    state.date = params.get('date') || '';
     state.sort = params.get('sort') || 'newest';
 
     elements.search.value = state.query;
@@ -207,6 +279,7 @@
     if (state.category) params.set('topic', state.category);
     if (state.format) params.set('format', state.format);
     if (state.year) params.set('year', state.year);
+    if (state.date) params.set('date', state.date);
     if (state.sort !== 'newest') params.set('sort', state.sort);
     const query = params.toString();
     history.replaceState(null, '', `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`);
@@ -214,6 +287,7 @@
 
   function render() {
     renderArchive();
+    renderActivityMap();
     renderFilterSummary();
     writeUrlState();
   }
@@ -223,6 +297,7 @@
     state.category = '';
     state.format = '';
     state.year = '';
+    state.date = '';
     state.sort = 'newest';
     elements.search.value = '';
     elements.category.value = '';
@@ -261,6 +336,15 @@
       const pool = getFilteredProjects();
       const project = pool[Math.floor(Math.random() * pool.length)] || state.projects[0];
       if (project) window.open(project.url, '_blank', 'noopener,noreferrer');
+    });
+
+    elements.activityMap?.addEventListener('click', (event) => {
+      const cell = event.target.closest('[data-activity-date]');
+      if (!cell) return;
+      const date = cell.dataset.activityDate || '';
+      state.date = state.date === date ? '' : date;
+      render();
+      document.querySelector('#archive-title').scrollIntoView({ block: 'start', behavior: 'smooth' });
     });
 
     elements.archive.addEventListener('click', (event) => {
@@ -327,6 +411,7 @@
       readUrlState();
       renderSummary();
       renderFeatured();
+      renderActivityMap();
       render();
       bindEvents();
     } catch (error) {
