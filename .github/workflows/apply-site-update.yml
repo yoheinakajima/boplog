@@ -1,0 +1,54 @@
+name: Apply generated site update
+
+on:
+  push:
+    branches:
+      - agent/talk-banner-ai-discovery
+    paths:
+      - '.site-update2/**'
+      - '.github/workflows/apply-site-update.yml'
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.head_ref || github.ref_name }}
+
+      - name: Reconstruct and verify payload
+        shell: bash
+        run: |
+          : > /tmp/site-update.tar.gz
+          for chunk in .site-update2/chunk.*; do
+            base64 --decode "$chunk" >> /tmp/site-update.tar.gz
+          done
+          echo '45e8612d389c4272052de8a4232366249915ff14cb1fc101efaef457f698d9d3  /tmp/site-update.tar.gz' | sha256sum --check --strict
+          tar -tzf /tmp/site-update.tar.gz >/dev/null
+
+      - name: Apply generated files
+        shell: bash
+        run: |
+          tar -xzf /tmp/site-update.tar.gz -C .
+          rm -rf .site-update .site-update2
+
+      - name: Validate site
+        run: npm run check
+
+      - name: Commit generated update
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Apply generated site update'
+          git push origin HEAD:${{ github.head_ref || github.ref_name }}
