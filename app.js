@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const BUILD_VERSION = '20260722.3';
+  const BUILD_VERSION = '20260722.4';
   const DATA_ROOT = new URL('./data/', document.baseURI);
   document.documentElement.dataset.build = BUILD_VERSION;
 
