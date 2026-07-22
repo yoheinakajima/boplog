@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const BUILD_VERSION = '20260722.4';
+  const BUILD_VERSION = '20260722.5';
   const DATA_ROOT = new URL('./data/', document.baseURI);
   document.documentElement.dataset.build = BUILD_VERSION;
 
@@ -329,9 +329,9 @@
 
       if (untilStart > 0) {
         elements.talkBanner.classList.remove('is-live', 'is-available');
-        elements.talkKicker.textContent = 'premieres in';
+        elements.talkKicker.textContent = 'now live';
         elements.talkCountdown.textContent = formatCountdown(untilStart);
-        elements.talkLink.textContent = 'set reminder ↗';
+        elements.talkLink.textContent = 'watch talk ↗';
         return;
       }
 

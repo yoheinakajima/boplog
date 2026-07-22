@@ -28,7 +28,7 @@ Last data refresh: 2026-07-22
 
 ## Upcoming / current media
 
-- [ActiveGraph — live from AI Engineer World's Fair](https://www.youtube.com/watch?v=khVX_BUnEwU): Streams July 22, 2026 at 10:00 AM Pacific Time; the same URL becomes the recording afterward.
+- [ActiveGraph at AI Engineer World's Fair](https://www.youtube.com/watch?v=khVX_BUnEwU): Now available on YouTube; published July 22, 2026 at 10:00 AM Pacific Time.
 
 ## Public project data
 
