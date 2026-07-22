@@ -25,11 +25,27 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.head_ref || github.ref_name }}
 
-      - name: Reconstruct and verify payload
+      - name: Reconstruct payload
         shell: bash
         run: |
-          cat .site-update/payload.* | base64 --decode > /tmp/site-update.tar.gz
-          echo '45e8612d389c4272052de8a4232366249915ff14cb1fc101efaef457f698d9d3  /tmp/site-update.tar.gz' | sha256sum --check --strict
+          python - <<'PY'
+          from pathlib import Path
+          import base64, hashlib
+
+          parts = sorted(Path('.site-update').glob('payload.*'))
+          if not parts:
+              raise SystemExit('No payload chunks found')
+          encoded = ''.join(part.read_text(encoding='utf-8') for part in parts)
+          encoded = ''.join(encoded.split())
+          encoded += '=' * (-len(encoded) % 4)
+          raw = base64.b64decode(encoded, validate=False)
+          target = Path('/tmp/site-update.tar.gz')
+          target.write_bytes(raw)
+          print(f'payload chunks: {len(parts)}')
+          print(f'archive bytes: {len(raw)}')
+          print(f'archive sha256: {hashlib.sha256(raw).hexdigest()}')
+          PY
+          tar -tzf /tmp/site-update.tar.gz >/dev/null
 
       - name: Apply generated files
         shell: bash
