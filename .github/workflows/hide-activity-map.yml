@@ -1,0 +1,29 @@
+name: Hide activity map
+
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/hide-activity-map.yml']
+
+permissions:
+  contents: write
+
+jobs:
+  hide:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Hide map and validate
+        run: |
+          printf '\n/* Preserved for possible future use; hidden from the current site. */\n.activity { display: none !important; }\n' >> styles.css
+          rm .github/workflows/hide-activity-map.yml
+          npm run check
+      - name: Commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add styles.css .github/workflows/hide-activity-map.yml
+          git commit -m 'Hide build activity map for now'
+          git push
