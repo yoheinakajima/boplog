@@ -366,3 +366,6 @@ footer a:hover { color: var(--accent); text-decoration: underline; text-underlin
   html { scroll-behavior: auto; }
   * { transition: none !important; }
 }
+
+/* Preserved for possible future use; hidden from the current site. */
+.activity { display: none !important; }
