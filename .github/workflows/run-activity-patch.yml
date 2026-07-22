@@ -1,0 +1,34 @@
+name: Run activity heatmap branch patch
+
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/run-activity-patch.yml']
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/activity-heatmap
+          fetch-depth: 0
+      - name: Extract and run staged patch
+        shell: bash
+        run: |
+          awk '/      - name: Patch site/{found=1; next} found && /      - name: Validate/{exit} found && /        run: \|/{code=1; next} code {sub(/^          /, ""); print}' .github/workflows/add-activity-map.yml > /tmp/activity_patch.py
+          python /tmp/activity_patch.py
+      - name: Validate
+        run: npm run check
+      - name: Commit branch update
+        shell: bash
+        run: |
+          rm -f .activity-trigger .github/workflows/add-activity-map.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Add interactive build activity heatmap'
+          git push origin HEAD:agent/activity-heatmap
