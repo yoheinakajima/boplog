@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const BUILD_VERSION = '20260722.5';
+  const BUILD_VERSION = '20260722.6';
   const DATA_ROOT = new URL('./data/', document.baseURI);
   document.documentElement.dataset.build = BUILD_VERSION;
 
@@ -30,10 +30,6 @@
     currentYear: document.querySelector('#current-year'),
     filterDisclosure: document.querySelector('#filter-disclosure'),
     filterSummary: document.querySelector('#filter-summary'),
-    talkBanner: document.querySelector('#talk-banner'),
-    talkKicker: document.querySelector('#talk-kicker'),
-    talkCountdown: document.querySelector('#talk-countdown'),
-    talkLink: document.querySelector('#talk-link'),
   };
 
   const categoryLabels = {
@@ -301,60 +297,6 @@
     });
   }
 
-  function formatCountdown(milliseconds) {
-    const totalSeconds = Math.max(0, Math.floor(milliseconds / 1000));
-    const days = Math.floor(totalSeconds / 86400);
-    const hours = Math.floor((totalSeconds % 86400) / 3600);
-    const minutes = Math.floor((totalSeconds % 3600) / 60);
-    const seconds = totalSeconds % 60;
-    const parts = [];
-    if (days) parts.push(`${days}d`);
-    if (days || hours) parts.push(`${hours}h`);
-    parts.push(`${minutes}m`);
-    parts.push(`${seconds}s`);
-    return parts.join(' ');
-  }
-
-  function initTalkBanner() {
-    if (!elements.talkBanner) return;
-    const start = new Date(elements.talkBanner.dataset.start || '');
-    if (Number.isNaN(start.valueOf())) return;
-    const liveWindow = 6 * 60 * 60 * 1000;
-    let timer;
-
-    const update = () => {
-      const now = Date.now();
-      const untilStart = start.getTime() - now;
-      const sinceStart = now - start.getTime();
-
-      if (untilStart > 0) {
-        elements.talkBanner.classList.remove('is-live', 'is-available');
-        elements.talkKicker.textContent = 'now live';
-        elements.talkCountdown.textContent = formatCountdown(untilStart);
-        elements.talkLink.textContent = 'watch talk ↗';
-        return;
-      }
-
-      elements.talkCountdown.textContent = 'July 22, 2026 · 10:00 AM PT';
-      if (sinceStart <= liveWindow) {
-        elements.talkBanner.classList.add('is-live');
-        elements.talkBanner.classList.remove('is-available');
-        elements.talkKicker.textContent = 'live now';
-        elements.talkLink.textContent = 'watch live ↗';
-        return;
-      }
-
-      elements.talkBanner.classList.remove('is-live');
-      elements.talkBanner.classList.add('is-available');
-      elements.talkKicker.textContent = 'available now';
-      elements.talkLink.textContent = 'watch talk ↗';
-      if (timer) window.clearInterval(timer);
-    };
-
-    update();
-    timer = window.setInterval(update, 1000);
-  }
-
   function versionedDataUrl(path, dataVersion = BUILD_VERSION) {
     const url = new URL(path, DATA_ROOT);
     url.searchParams.set('v', `${BUILD_VERSION}-${dataVersion}`);
@@ -395,6 +337,5 @@
   }
 
   elements.currentYear.textContent = new Date().getFullYear();
-  initTalkBanner();
   loadProjects();
 })();
