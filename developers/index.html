@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Free CLI, MCP, OpenAPI, and static JSON access for Yohei Nakajima's public build archive.">
+  <title>Developers — yohei.me</title>
+  <style>
+    :root{color-scheme:light;--bg:#fafaf7;--text:#171717;--muted:#696961;--line:#dcdcd4;--accent:#0550ae;--mono:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}main{width:min(820px,calc(100vw - 32px));margin:0 auto;padding:34px 0 70px}h1,h2{font-family:var(--mono)}h1{font-size:20px;margin:0 0 8px}h2{font-size:14px;margin:30px 0 8px;padding-top:18px;border-top:1px solid var(--line)}p{color:var(--muted)}a{color:var(--accent)}code,pre{font-family:var(--mono)}pre{overflow:auto;padding:13px;border:1px solid var(--line);background:#fff;font-size:12px}ul{padding-left:20px}.back{font:12px var(--mono)}
+  </style>
+</head>
+<body>
+<main>
+  <a class="back" href="/">← yohei.me</a>
+  <h1>Developer access</h1>
+  <p>Free, read-only access to Yohei Nakajima's explicitly public build archive. No account, API key, or rate-plan signup is required.</p>
+
+  <h2 id="data">Static JSON API</h2>
+  <p>Start with the manifest, then fetch one or more year files.</p>
+  <pre><code>curl -s https://yohei.me/data/manifest.json
+curl -s https://yohei.me/data/projects-2026.json</code></pre>
+  <p><a href="/openapi.json">OpenAPI 3.1 description</a> · <a href="/data/manifest.json">Project manifest</a></p>
+
+  <h2 id="cli">CLI</h2>
+  <p>The CLI is one dependency-free Python file.</p>
+  <pre><code>curl -fsSL https://yohei.me/yohei -o ~/.local/bin/yohei
+chmod +x ~/.local/bin/yohei
+
+yohei latest 5
+yohei search activegraph
+yohei topic econ
+yohei date 2026-07-21
+yohei --json get activegraph</code></pre>
+  <p>Optional installer for both the CLI and MCP server:</p>
+  <pre><code>curl -fsSL https://yohei.me/skills.sh | sh</code></pre>
+  <p>Review <a href="/skills.sh">the installer source</a> before piping it to a shell.</p>
+
+  <h2 id="mcp">MCP</h2>
+  <p>The free MCP server runs locally over stdio and reads the public archive over HTTPS. It exposes <code>latest_builds</code>, <code>search_builds</code>, and <code>get_build</code>.</p>
+  <pre><code>curl -fsSL https://yohei.me/mcp/yohei_mcp.py -o ~/.local/bin/yohei-mcp
+chmod +x ~/.local/bin/yohei-mcp</code></pre>
+  <p>Example client configuration:</p>
+  <pre><code>{
+  "mcpServers": {
+    "yohei": {
+      "command": "/Users/YOU/.local/bin/yohei-mcp",
+      "args": []
+    }
+  }
+}</code></pre>
+  <p>This is intentionally a local stdio server. GitHub Pages is a static host and cannot provide a persistent remote MCP transport.</p>
+
+  <h2 id="agents">Agent discovery</h2>
+  <ul>
+    <li><a href="/agents.md">agents.md</a> — when-to-use guidance and data conventions</li>
+    <li><a href="/llms.txt">llms.txt</a> — concise site map for language models</li>
+    <li><a href="/.well-known/agent-skills">/.well-known/agent-skills</a> — machine-readable capabilities</li>
+    <li><a href="/.well-known/mcp">/.well-known/mcp</a> — MCP discovery and installation metadata</li>
+  </ul>
+
+  <h2>Privacy and scope</h2>
+  <p>Only records explicitly marked public are exposed. The API and tools are read-only and do not access private Airtable records, email, calendars, investments, or personal data.</p>
+</main>
+</body>
+</html>
