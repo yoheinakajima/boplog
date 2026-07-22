@@ -1,1 +1,143 @@
-{"projects":[{"id":"the-shared-discovery-paradox","name":"The Shared Discovery Paradox","description":"A mathematical explanation of how information sharing without action coordination can worsen group outcomes.","date":"2026-07-21","url":"https://x.com/yoheinakajima/status/2079567881889796456?s=20","types":["public"],"formats":[],"categories":[],"displayName":"Shared Discovery Protocol","eyebrow":"Research program","featured":true,"featuredRank":2,"accent":"amber","links":[{"label":"Explore the research","url":"https://yoheinakajima.github.io/distributed-discovery/"},{"label":"Read the paper","url":"https://arxiv.org/abs/2607.18045"},{"label":"GitHub","url":"https://github.com/yoheinakajima/distributed-discovery"},{"label":"Launch post","url":"https://x.com/yoheinakajima/status/2079567881889796456?s=20"}]},{"id":"regimes","name":"Regimes","description":"An auditable, held-out-gated self-improvement loop demonstrated on LongMemEval.","date":"2026-06-10","url":"https://x.com/yoheinakajima/status/2064830891143381076","types":["public"],"formats":[],"categories":["ai","dev"]},{"id":"ag-coder","name":"AG Coder","description":"An open-source reference coding agent built on ActiveGraph.","date":"2026-06-08","url":"https://x.com/yoheinakajima/status/2064026650988495279?s=20","types":["public","py"],"formats":[],"categories":["ai","dev"]},{"id":"learn-activegraph","name":"Learn ActiveGraph","description":"An interactive site for learning ActiveGraph concepts through hands-on examples.","date":"2026-06-08","url":"https://x.com/yoheinakajima/status/2064026650988495279?s=20","types":["public"],"formats":[],"categories":["ai","dev"]},{"id":"activegraph-longmemeval-experiments","name":"ActiveGraph LongMemEval Experiments","description":"Experiments comparing deterministic, semantic, and hybrid architectures for auditable agent memory.","date":"2026-06-01","url":"https://x.com/yoheinakajima/status/2061478691952271452","types":["public"],"formats":[],"categories":["ai","dev"]},{"id":"the-log-is-the-agent","name":"The Log Is the Agent","description":"An arXiv paper introducing event-sourced reactive graphs for auditable and forkable agentic systems.","date":"2026-05-22","url":"https://x.com/yoheinakajima/status/2057812713045377055","types":["public"],"formats":[],"categories":["ai","dev"]},{"id":"activegraph","name":"ActiveGraph","description":"An event-sourced reactive graph runtime for auditable, forkable, long-running agents.","date":"2026-05-20","url":"https://x.com/yoheinakajima/status/2057099245430222926","types":["public","py"],"formats":["video"],"categories":["ai","dev"],"eyebrow":"Open-source agent runtime","featured":true,"featuredRank":1,"accent":"cyan","links":[{"label":"Visit ActiveGraph","url":"https://activegraph.ai"},{"label":"Read the docs","url":"https://docs.activegraph.ai"},{"label":"GitHub","url":"https://github.com/yoheinakajima/activegraph"},{"label":"Launch post","url":"https://x.com/yoheinakajima/status/2057099245430222926"}]},{"id":"babyagi-wiki","name":"BabyAGI Wiki","description":"A technical history comparing nine iterations of BabyAGI across three years.","date":"2026-03-19","url":"https://x.com/yoheinakajima/status/2034669922174029900?s=20","types":["public"],"formats":[],"categories":["ai"]},{"id":"pitch-yohei","name":"Pitch Yohei","description":"A live AI pitch agent that interviews founders and VCs and extracts structured startup data.","date":"2026-03-12","url":"https://x.com/yoheinakajima/status/2032096564261634223?s=20","types":["public","prototype"],"formats":[],"categories":["ai","vc"]},{"id":"ode-to-claude-code","name":"Ode to Claude Code","description":"An AI-generated sea shanty for Claude Code lovers.","date":"2026-02-12","url":"https://x.com/yoheinakajima/status/2021963241413652795?s=20","types":["public"],"formats":["video"],"categories":["ai","art"]},{"id":"babyagi-3","name":"BabyAGI 3","description":"A minimal autonomous assistant.","date":"2026-02-06","url":"https://x.com/yoheinakajima/status/2020027037180932347?s=20","types":["public"],"formats":[],"categories":["ai"]},{"id":"k-i-s-s","name":"K.I.S.S.","description":"A daily prompting game.","date":"2026-01-13","url":"https://x.com/yoheinakajima/status/2011167014329729070","types":["public"],"formats":[],"categories":["ai"]}]}
+{
+  "projects": [
+    {
+      "id": "the-shared-discovery-paradox",
+      "name": "The Shared Discovery Paradox",
+      "description": "A mathematical explanation of how information sharing without action coordination can worsen group outcomes.",
+      "date": "2026-07-21",
+      "url": "https://x.com/yoheinakajima/status/2079567881889796456?s=20",
+      "types": ["public"],
+      "formats": [],
+      "categories": ["econ"],
+      "eyebrow": "Economics research",
+      "featured": true,
+      "featuredRank": 2,
+      "accent": "amber",
+      "links": [
+        {"label": "Read the paper", "url": "https://arxiv.org/abs/2607.18045"},
+        {"label": "GitHub", "url": "https://github.com/yoheinakajima/shared-discovery-paradox"},
+        {"label": "Launch post", "url": "https://x.com/yoheinakajima/status/2079567881889796456?s=20"}
+      ]
+    },
+    {
+      "id": "regimes",
+      "name": "Regimes",
+      "description": "An auditable, held-out-gated self-improvement loop demonstrated on LongMemEval.",
+      "date": "2026-06-10",
+      "url": "https://x.com/yoheinakajima/status/2064830891143381076",
+      "types": ["public"],
+      "formats": [],
+      "categories": ["ai", "dev"]
+    },
+    {
+      "id": "ag-coder",
+      "name": "AG Coder",
+      "description": "An open-source reference coding agent built on ActiveGraph.",
+      "date": "2026-06-08",
+      "url": "https://x.com/yoheinakajima/status/2064026650988495279?s=20",
+      "types": ["public", "py"],
+      "formats": [],
+      "categories": ["ai", "dev"]
+    },
+    {
+      "id": "learn-activegraph",
+      "name": "Learn ActiveGraph",
+      "description": "An interactive site for learning ActiveGraph concepts through hands-on examples.",
+      "date": "2026-06-08",
+      "url": "https://x.com/yoheinakajima/status/2064026650988495279?s=20",
+      "types": ["public"],
+      "formats": [],
+      "categories": ["ai", "dev"]
+    },
+    {
+      "id": "activegraph-longmemeval-experiments",
+      "name": "ActiveGraph LongMemEval Experiments",
+      "description": "Experiments comparing deterministic, semantic, and hybrid architectures for auditable agent memory.",
+      "date": "2026-06-01",
+      "url": "https://x.com/yoheinakajima/status/2061478691952271452",
+      "types": ["public"],
+      "formats": [],
+      "categories": ["ai", "dev"]
+    },
+    {
+      "id": "the-log-is-the-agent",
+      "name": "The Log Is the Agent",
+      "description": "An arXiv paper introducing event-sourced reactive graphs for auditable and forkable agentic systems.",
+      "date": "2026-05-22",
+      "url": "https://x.com/yoheinakajima/status/2057812713045377055",
+      "types": ["public"],
+      "formats": [],
+      "categories": ["ai", "dev"]
+    },
+    {
+      "id": "activegraph",
+      "name": "ActiveGraph",
+      "description": "An event-sourced reactive graph runtime for auditable, forkable, long-running agents.",
+      "date": "2026-05-20",
+      "url": "https://x.com/yoheinakajima/status/2057099245430222926",
+      "types": ["public", "py"],
+      "formats": ["video"],
+      "categories": ["ai", "dev"],
+      "eyebrow": "Open-source agent runtime",
+      "featured": true,
+      "featuredRank": 1,
+      "accent": "cyan",
+      "links": [
+        {"label": "Visit ActiveGraph", "url": "https://activegraph.ai"},
+        {"label": "Read the docs", "url": "https://docs.activegraph.ai"},
+        {"label": "GitHub", "url": "https://github.com/yoheinakajima/activegraph"},
+        {"label": "Launch post", "url": "https://x.com/yoheinakajima/status/2057099245430222926"}
+      ]
+    },
+    {
+      "id": "babyagi-wiki",
+      "name": "BabyAGI Wiki",
+      "description": "A technical history comparing nine iterations of BabyAGI across three years.",
+      "date": "2026-03-19",
+      "url": "https://x.com/yoheinakajima/status/2034669922174029900?s=20",
+      "types": ["public"],
+      "formats": [],
+      "categories": ["ai"]
+    },
+    {
+      "id": "pitch-yohei",
+      "name": "Pitch Yohei",
+      "description": "A live AI pitch agent that interviews founders and VCs and extracts structured startup data.",
+      "date": "2026-03-12",
+      "url": "https://x.com/yoheinakajima/status/2032096564261634223?s=20",
+      "types": ["public", "prototype"],
+      "formats": [],
+      "categories": ["ai", "vc"]
+    },
+    {
+      "id": "ode-to-claude-code",
+      "name": "Ode to Claude Code",
+      "description": "An AI-generated sea shanty for Claude Code lovers.",
+      "date": "2026-02-12",
+      "url": "https://x.com/yoheinakajima/status/2021963241413652795?s=20",
+      "types": ["public"],
+      "formats": ["video"],
+      "categories": ["ai", "art"]
+    },
+    {
+      "id": "babyagi-3",
+      "name": "BabyAGI 3",
+      "description": "A minimal autonomous assistant.",
+      "date": "2026-02-06",
+      "url": "https://x.com/yoheinakajima/status/2020027037180932347?s=20",
+      "types": ["public"],
+      "formats": [],
+      "categories": ["ai"]
+    },
+    {
+      "id": "k-i-s-s",
+      "name": "K.I.S.S.",
+      "description": "A daily prompting game.",
+      "date": "2026-01-13",
+      "url": "https://x.com/yoheinakajima/status/2011167014329729070",
+      "types": ["public"],
+      "formats": [],
+      "categories": ["ai"]
+    }
+  ]
+}

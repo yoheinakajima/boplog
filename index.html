@@ -5,16 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
   <meta name="theme-color" content="#fafaf7">
-  <meta name="boplog-build" content="2026-07-22.2">
-  <meta name="description" content="Yohei Nakajima's build log: agents, tools, research, experiments, and occasional weirdness.">
+  <meta name="boplog-build" content="2026-07-22.3">
+  <meta name="description" content="Yohei Nakajima's public build log: AI agents, developer tools, venture experiments, economics research, art, and open-source projects.">
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
   <meta property="og:title" content="Yohei Nakajima — Build Log">
-  <meta property="og:description" content="A compact chronological log of builds, experiments, and research.">
+  <meta property="og:description" content="A compact chronological log of public builds, experiments, open-source software, and research.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yohei.me">
+  <meta property="og:url" content="https://yohei.me/">
   <meta name="twitter:card" content="summary">
   <title>Yohei Nakajima — Build Log</title>
+  <link rel="canonical" href="https://yohei.me/">
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./styles.css?v=20260722.2">
+  <link rel="stylesheet" href="./styles.css?v=20260722.3">
+  <link rel="alternate" type="application/atom+xml" href="./feed.xml" title="Yohei Nakajima Build Log">
+  <link rel="alternate" type="application/json" href="./data/manifest.json" title="Public project data manifest">
+  <link rel="alternate" type="text/plain" href="./llms.txt" title="AI-readable site guide">
   <style>
     :root { color-scheme: light; }
     html, body { background: #fafaf7; color: #171717; }
@@ -22,15 +27,76 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Yohei Nakajima",
-    "url": "https://yohei.me",
-    "sameAs": [
-      "https://x.com/yoheinakajima",
-      "https://github.com/yoheinakajima",
-      "https://untapped.vc"
-    ],
-    "jobTitle": "Venture capitalist and builder"
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://yohei.me/#yohei",
+        "name": "Yohei Nakajima",
+        "url": "https://yohei.me/",
+        "sameAs": [
+          "https://x.com/yoheinakajima",
+          "https://github.com/yoheinakajima",
+          "https://untapped.vc"
+        ],
+        "jobTitle": "Venture capitalist and builder",
+        "knowsAbout": [
+          "AI agents",
+          "open-source software",
+          "developer tools",
+          "venture capital",
+          "economics research"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://yohei.me/#website",
+        "url": "https://yohei.me/",
+        "name": "Yohei Nakajima — Build Log",
+        "description": "A chronological archive of Yohei Nakajima's public builds, experiments, software, and research.",
+        "author": { "@id": "https://yohei.me/#yohei" },
+        "inLanguage": "en-US"
+      },
+      {
+        "@type": "CollectionPage",
+        "@id": "https://yohei.me/#build-log",
+        "url": "https://yohei.me/",
+        "name": "Yohei Nakajima's public build log",
+        "isPartOf": { "@id": "https://yohei.me/#website" },
+        "about": { "@id": "https://yohei.me/#yohei" },
+        "mainEntity": { "@id": "https://yohei.me/#project-dataset" }
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://yohei.me/#project-dataset",
+        "name": "Yohei Nakajima public project archive",
+        "description": "Structured metadata for public builds and research projects from 2020 through 2026.",
+        "creator": { "@id": "https://yohei.me/#yohei" },
+        "url": "https://yohei.me/data/manifest.json",
+        "dateModified": "2026-07-22",
+        "license": "https://github.com/yoheinakajima/boplog/blob/main/LICENSE",
+        "distribution": {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://yohei.me/data/manifest.json"
+        }
+      },
+      {
+        "@type": "Event",
+        "@id": "https://yohei.me/#ai-engineer-talk-2026-07-22",
+        "name": "Yohei Nakajima — AI Engineer talk premiere",
+        "description": "A new AI Engineer talk from Yohei Nakajima, premiering online July 22, 2026 at 10:00 AM Pacific Time.",
+        "startDate": "2026-07-22T10:00:00-07:00",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+        "location": {
+          "@type": "VirtualLocation",
+          "url": "https://www.youtube.com/watch?v=khVX_BUnEwU"
+        },
+        "performer": { "@id": "https://yohei.me/#yohei" },
+        "organizer": { "@id": "https://yohei.me/#yohei" },
+        "url": "https://www.youtube.com/watch?v=khVX_BUnEwU"
+      }
+    ]
   }
   </script>
 </head>
@@ -42,7 +108,7 @@
       <div class="intro__copy">
         <h1 id="intro-title">Yohei Nakajima</h1>
         <p>VC / builder. A running log of agents, tools, research, and experiments.</p>
-        <p class="intro__meta" id="archive-summary">Loading public builds…</p>
+        <p class="intro__meta" id="archive-summary">121 public builds · 2020—2026</p>
       </div>
       <nav class="intro__links" aria-label="External links">
         <a href="https://x.com/yoheinakajima" target="_blank" rel="noreferrer">x ↗</a>
@@ -51,58 +117,176 @@
       </nav>
     </section>
 
+    <aside class="talk-banner" id="talk-banner" data-start="2026-07-22T10:00:00-07:00" aria-labelledby="talk-title">
+      <div class="talk-banner__status">
+        <span class="talk-banner__dot" aria-hidden="true"></span>
+        <span id="talk-kicker" aria-live="polite">premieres soon</span>
+      </div>
+      <div class="talk-banner__main">
+        <div>
+          <h2 id="talk-title">New AI Engineer talk</h2>
+          <p>A new talk on building AI systems premieres on YouTube.</p>
+        </div>
+        <div class="talk-banner__time">
+          <time datetime="2026-07-22T10:00:00-07:00">July 22, 2026 · 10:00 AM PT</time>
+          <span id="talk-countdown">calculating countdown…</span>
+        </div>
+      </div>
+      <a class="talk-banner__link" id="talk-link" href="https://www.youtube.com/watch?v=khVX_BUnEwU" target="_blank" rel="noreferrer">set reminder ↗</a>
+    </aside>
+
     <section class="featured" id="featured" aria-labelledby="featured-title">
       <div class="section-line">
         <h2 id="featured-title"><span aria-hidden="true">//</span> featured</h2>
         <span>selected work</span>
       </div>
-      <div class="featured-list" id="featured-list" data-count="0" aria-live="polite"></div>
+      <div class="featured-list" id="featured-list" data-count="2" aria-live="polite">
+        <article class="featured-item">
+          <div class="featured-item__index">01</div>
+          <div class="featured-item__body">
+            <div class="featured-item__line">
+              <h3><a href="https://x.com/yoheinakajima/status/2057099245430222926" target="_blank" rel="noreferrer">ActiveGraph</a></h3>
+              <time datetime="2026-05-20">2026-05-20</time>
+            </div>
+            <p>An event-sourced reactive graph runtime for auditable, forkable, long-running agents.</p>
+            <div class="featured-item__meta">
+              <span>Open-source agent runtime</span>
+              <a href="https://activegraph.ai" target="_blank" rel="noreferrer">site ↗</a>
+              <a href="https://docs.activegraph.ai" target="_blank" rel="noreferrer">docs ↗</a>
+              <a href="https://github.com/yoheinakajima/activegraph" target="_blank" rel="noreferrer">github ↗</a>
+            </div>
+          </div>
+        </article>
+        <article class="featured-item">
+          <div class="featured-item__index">02</div>
+          <div class="featured-item__body">
+            <div class="featured-item__line">
+              <h3><a href="https://x.com/yoheinakajima/status/2079567881889796456?s=20" target="_blank" rel="noreferrer">The Shared Discovery Paradox</a></h3>
+              <time datetime="2026-07-21">2026-07-21</time>
+            </div>
+            <p>A mathematical explanation of how information sharing without action coordination can worsen group outcomes.</p>
+            <div class="featured-item__meta">
+              <span>Economics research</span>
+              <a href="https://arxiv.org/abs/2607.18045" target="_blank" rel="noreferrer">paper ↗</a>
+              <a href="https://github.com/yoheinakajima/shared-discovery-paradox" target="_blank" rel="noreferrer">github ↗</a>
+              <a href="https://x.com/yoheinakajima/status/2079567881889796456?s=20" target="_blank" rel="noreferrer">launch post ↗</a>
+            </div>
+          </div>
+        </article>
+      </div>
     </section>
 
     <section class="archive" id="archive" aria-labelledby="archive-title">
       <div class="section-line">
         <h2 id="archive-title"><span aria-hidden="true">//</span> build log</h2>
-        <p id="result-count" aria-live="polite">Loading…</p>
+        <p id="result-count" aria-live="polite">121 / 121</p>
       </div>
 
-      <div class="filters" id="filters" aria-label="Project filters">
-        <label class="filter filter--search" for="project-search">
-          <span>search</span>
-          <input id="project-search" type="search" autocomplete="off" placeholder="name, description, tag…">
-          <kbd>/</kbd>
-        </label>
-        <label class="filter" for="category-filter">
-          <span>topic</span>
-          <select id="category-filter"><option value="">all</option></select>
-        </label>
-        <label class="filter" for="year-filter">
-          <span>year</span>
-          <select id="year-filter"><option value="">all</option></select>
-        </label>
-        <label class="filter" for="format-filter">
-          <span>format</span>
-          <select id="format-filter"><option value="">all</option></select>
-        </label>
-        <label class="filter" for="sort-filter">
-          <span>sort</span>
-          <select id="sort-filter">
-            <option value="newest">newest</option>
-            <option value="oldest">oldest</option>
-            <option value="az">a–z</option>
-          </select>
-        </label>
-        <div class="filter-actions">
-          <button id="random-build" type="button">random()</button>
-          <button id="clear-filters" type="button">clear</button>
+      <details class="filter-disclosure" id="filter-disclosure">
+        <summary>
+          <span>filter / sort</span>
+          <span id="filter-summary">all projects</span>
+        </summary>
+        <div class="filters" id="filters" aria-label="Project filters">
+          <label class="filter filter--search" for="project-search">
+            <span>search</span>
+            <input id="project-search" type="search" autocomplete="off" placeholder="name, description, tag…">
+            <kbd>/</kbd>
+          </label>
+          <label class="filter" for="category-filter">
+            <span>topic</span>
+            <select id="category-filter"><option value="">all</option></select>
+          </label>
+          <label class="filter" for="year-filter">
+            <span>year</span>
+            <select id="year-filter"><option value="">all</option></select>
+          </label>
+          <label class="filter" for="format-filter">
+            <span>format</span>
+            <select id="format-filter"><option value="">all</option></select>
+          </label>
+          <label class="filter" for="sort-filter">
+            <span>sort</span>
+            <select id="sort-filter">
+              <option value="newest">newest</option>
+              <option value="oldest">oldest</option>
+              <option value="az">a–z</option>
+            </select>
+          </label>
+          <div class="filter-actions">
+            <button id="random-build" type="button">random()</button>
+            <button id="clear-filters" type="button">clear</button>
+          </div>
         </div>
-      </div>
+      </details>
 
       <div class="list-head" aria-hidden="true">
         <span>date</span>
         <span>project</span>
         <span>tags</span>
       </div>
-      <div class="project-list" id="project-archive" aria-live="polite"></div>
+      <div class="project-list" id="project-archive" aria-live="polite">
+        <article class="project-row">
+          <time datetime="2026-07-21">2026-07-21</time>
+          <div class="project-row__main"><h3><a href="https://x.com/yoheinakajima/status/2079567881889796456?s=20" target="_blank" rel="noreferrer">The Shared Discovery Paradox <span aria-hidden="true">↗</span></a></h3><p>A mathematical explanation of how information sharing without action coordination can worsen group outcomes.</p></div>
+          <div class="project-row__tags"><a href="?topic=econ">#econ</a></div>
+        </article>
+        <article class="project-row">
+          <time datetime="2026-06-10">2026-06-10</time>
+          <div class="project-row__main"><h3><a href="https://x.com/yoheinakajima/status/2064830891143381076" target="_blank" rel="noreferrer">Regimes <span aria-hidden="true">↗</span></a></h3><p>An auditable, held-out-gated self-improvement loop demonstrated on LongMemEval.</p></div>
+          <div class="project-row__tags"><a href="?topic=ai">#AI</a><a href="?topic=dev">#dev</a></div>
+        </article>
+        <article class="project-row">
+          <time datetime="2026-06-08">2026-06-08</time>
+          <div class="project-row__main"><h3><a href="https://x.com/yoheinakajima/status/2064026650988495279?s=20" target="_blank" rel="noreferrer">AG Coder <span aria-hidden="true">↗</span></a></h3><p>An open-source reference coding agent built on ActiveGraph.</p></div>
+          <div class="project-row__tags"><a href="?topic=ai">#AI</a><a href="?topic=dev">#dev</a><span class="type-tag">[py]</span></div>
+        </article>
+        <article class="project-row">
+          <time datetime="2026-06-08">2026-06-08</time>
+          <div class="project-row__main"><h3><a href="https://x.com/yoheinakajima/status/2064026650988495279?s=20" target="_blank" rel="noreferrer">Learn ActiveGraph <span aria-hidden="true">↗</span></a></h3><p>An interactive site for learning ActiveGraph concepts through hands-on examples.</p></div>
+          <div class="project-row__tags"><a href="?topic=ai">#AI</a><a href="?topic=dev">#dev</a></div>
+        </article>
+        <article class="project-row">
+          <time datetime="2026-06-01">2026-06-01</time>
+          <div class="project-row__main"><h3><a href="https://x.com/yoheinakajima/status/2061478691952271452" target="_blank" rel="noreferrer">ActiveGraph LongMemEval Experiments <span aria-hidden="true">↗</span></a></h3><p>Experiments comparing deterministic, semantic, and hybrid architectures for auditable agent memory.</p></div>
+          <div class="project-row__tags"><a href="?topic=ai">#AI</a><a href="?topic=dev">#dev</a></div>
+        </article>
+        <article class="project-row">
+          <time datetime="2026-05-22">2026-05-22</time>
+          <div class="project-row__main"><h3><a href="https://x.com/yoheinakajima/status/2057812713045377055" target="_blank" rel="noreferrer">The Log Is the Agent <span aria-hidden="true">↗</span></a></h3><p>An arXiv paper introducing event-sourced reactive graphs for auditable and forkable agentic systems.</p></div>
+          <div class="project-row__tags"><a href="?topic=ai">#AI</a><a href="?topic=dev">#dev</a></div>
+        </article>
+        <article class="project-row">
+          <time datetime="2026-05-20">2026-05-20</time>
+          <div class="project-row__main"><h3><a href="https://x.com/yoheinakajima/status/2057099245430222926" target="_blank" rel="noreferrer">ActiveGraph <span aria-hidden="true">↗</span></a></h3><p>An event-sourced reactive graph runtime for auditable, forkable, long-running agents.</p></div>
+          <div class="project-row__tags"><a href="?topic=ai">#AI</a><a href="?topic=dev">#dev</a><a href="?format=video">.video</a><span class="type-tag">[py]</span></div>
+        </article>
+        <article class="project-row">
+          <time datetime="2026-03-19">2026-03-19</time>
+          <div class="project-row__main"><h3><a href="https://x.com/yoheinakajima/status/2034669922174029900?s=20" target="_blank" rel="noreferrer">BabyAGI Wiki <span aria-hidden="true">↗</span></a></h3><p>A technical history comparing nine iterations of BabyAGI across three years.</p></div>
+          <div class="project-row__tags"><a href="?topic=ai">#AI</a></div>
+        </article>
+        <article class="project-row">
+          <time datetime="2026-03-12">2026-03-12</time>
+          <div class="project-row__main"><h3><a href="https://x.com/yoheinakajima/status/2032096564261634223?s=20" target="_blank" rel="noreferrer">Pitch Yohei <span aria-hidden="true">↗</span></a></h3><p>A live AI pitch agent that interviews founders and VCs and extracts structured startup data.</p></div>
+          <div class="project-row__tags"><a href="?topic=ai">#AI</a><a href="?topic=vc">#VC</a><span class="type-tag">[prototype]</span></div>
+        </article>
+        <article class="project-row">
+          <time datetime="2026-02-12">2026-02-12</time>
+          <div class="project-row__main"><h3><a href="https://x.com/yoheinakajima/status/2021963241413652795?s=20" target="_blank" rel="noreferrer">Ode to Claude Code <span aria-hidden="true">↗</span></a></h3><p>An AI-generated sea shanty for Claude Code lovers.</p></div>
+          <div class="project-row__tags"><a href="?topic=ai">#AI</a><a href="?topic=art">#art</a><a href="?format=video">.video</a></div>
+        </article>
+        <article class="project-row">
+          <time datetime="2026-02-06">2026-02-06</time>
+          <div class="project-row__main"><h3><a href="https://x.com/yoheinakajima/status/2020027037180932347?s=20" target="_blank" rel="noreferrer">BabyAGI 3 <span aria-hidden="true">↗</span></a></h3><p>A minimal autonomous assistant.</p></div>
+          <div class="project-row__tags"><a href="?topic=ai">#AI</a></div>
+        </article>
+        <article class="project-row">
+          <time datetime="2026-01-13">2026-01-13</time>
+          <div class="project-row__main"><h3><a href="https://x.com/yoheinakajima/status/2011167014329729070" target="_blank" rel="noreferrer">K.I.S.S. <span aria-hidden="true">↗</span></a></h3><p>A daily prompting game.</p></div>
+          <div class="project-row__tags"><a href="?topic=ai">#AI</a></div>
+        </article>
+      </div>
       <div class="empty-state" id="empty-state" hidden>
         <p>No projects match those filters.</p>
         <button type="button" data-clear-filters>clear filters</button>
@@ -115,18 +299,31 @@
       </div>
       <p>I’m an early-stage investor who builds software to explore ideas, understand emerging technology, and meet ambitious founders. This is the artifact trail.</p>
     </section>
+
+    <section class="machine-readable" aria-labelledby="machine-title">
+      <div class="section-line">
+        <h2 id="machine-title"><span aria-hidden="true">//</span> machine-readable</h2>
+      </div>
+      <p>Public project metadata is available without JavaScript.</p>
+      <div class="machine-readable__links">
+        <a href="./llms.txt">llms.txt</a>
+        <a href="./data/manifest.json">JSON manifest</a>
+        <a href="./feed.xml">Atom feed</a>
+        <a href="./sitemap.xml">sitemap.xml</a>
+      </div>
+    </section>
   </main>
 
   <footer class="shell">
-    <span>© <span id="current-year"></span> Yohei Nakajima</span>
+    <span>© <span id="current-year">2026</span> Yohei Nakajima</span>
     <span>public data snapshot exported from Airtable</span>
     <a href="#top">top ↑</a>
   </footer>
 
   <noscript>
-    <div class="noscript">JavaScript is required to load and filter the project archive.</div>
+    <div class="noscript">The latest projects are shown above. The complete public archive is available through the JSON manifest and Atom feed.</div>
   </noscript>
 
-  <script src="./app.js?v=20260722.2" defer></script>
+  <script src="./app.js?v=20260722.3" defer></script>
 </body>
 </html>
