@@ -1,0 +1,28 @@
+{
+  "name": "yohei.me public build archive",
+  "description": "Free, read-only access to Yohei Nakajima's explicitly public builds, research, talks, and open-source projects.",
+  "homepage": "https://yohei.me/",
+  "instructions": "https://yohei.me/agents.md",
+  "openapi": "https://yohei.me/openapi.json",
+  "developerGuide": "https://yohei.me/developers/",
+  "capabilities": [
+    {
+      "name": "search-public-builds",
+      "whenToUse": "When a user asks what Yohei has publicly built, researched, published, or presented.",
+      "data": "https://yohei.me/data/manifest.json"
+    },
+    {
+      "name": "query-from-cli",
+      "whenToUse": "When a user or agent needs terminal access without an API key.",
+      "command": "yohei search activegraph"
+    },
+    {
+      "name": "query-over-mcp",
+      "whenToUse": "When an MCP host needs read-only tools for latest, search, and exact build retrieval.",
+      "discovery": "https://yohei.me/.well-known/mcp"
+    }
+  ],
+  "authentication": "none",
+  "cost": "free",
+  "dataPolicy": "Only records explicitly tagged public are exposed."
+}
