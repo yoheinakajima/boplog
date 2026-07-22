@@ -35,10 +35,14 @@ jobs:
           parts = sorted(Path('.site-update').glob('payload.*'))
           if not parts:
               raise SystemExit('No payload chunks found')
-          encoded = ''.join(part.read_text(encoding='utf-8') for part in parts)
-          encoded = ''.join(encoded.split())
-          encoded += '=' * (-len(encoded) % 4)
-          raw = base64.b64decode(encoded, validate=False)
+
+          decoded = []
+          for part in parts:
+              encoded = ''.join(part.read_text(encoding='utf-8').split())
+              encoded += '=' * (-len(encoded) % 4)
+              decoded.append(base64.b64decode(encoded, validate=False))
+
+          raw = b''.join(decoded)
           target = Path('/tmp/site-update.tar.gz')
           target.write_bytes(raw)
           print(f'payload chunks: {len(parts)}')
