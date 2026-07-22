@@ -1,7 +1,10 @@
 (() => {
   'use strict';
 
-  const DATA_URL = './data/manifest.json';
+  const BUILD_VERSION = '20260722.2';
+  const DATA_ROOT = new URL('./data/', document.baseURI);
+  document.documentElement.dataset.build = BUILD_VERSION;
+
   const state = {
     projects: [],
     query: '',
@@ -231,7 +234,7 @@
       render();
     });
     elements.clearFilters.addEventListener('click', clearFilters);
-    document.querySelector('[data-clear-filters]').addEventListener('click', clearFilters);
+    document.querySelector('[data-clear-filters]')?.addEventListener('click', clearFilters);
 
     elements.randomBuild.addEventListener('click', () => {
       const pool = getFilteredProjects();
@@ -271,13 +274,24 @@
     });
   }
 
+  function versionedDataUrl(path, dataVersion = BUILD_VERSION) {
+    const url = new URL(path, DATA_ROOT);
+    url.searchParams.set('v', `${BUILD_VERSION}-${dataVersion}`);
+    return url;
+  }
+
   async function loadProjects() {
     try {
-      const manifestResponse = await fetch(DATA_URL);
+      const manifestResponse = await fetch(versionedDataUrl('manifest.json'), { cache: 'no-store' });
       if (!manifestResponse.ok) throw new Error(`manifest: ${manifestResponse.status}`);
       const manifest = await manifestResponse.json();
-      const chunks = await Promise.all((manifest.files || []).map(async (file) => {
-        const response = await fetch(`./data/${file}`);
+      if (!Array.isArray(manifest.files) || manifest.files.length === 0) {
+        throw new Error('manifest contains no project files');
+      }
+
+      const dataVersion = manifest.generatedAt || BUILD_VERSION;
+      const chunks = await Promise.all(manifest.files.map(async (file) => {
+        const response = await fetch(versionedDataUrl(file, dataVersion), { cache: 'no-store' });
         if (!response.ok) throw new Error(`${file}: ${response.status}`);
         return response.json();
       }));
@@ -294,10 +308,10 @@
       bindEvents();
       elements.currentYear.textContent = new Date().getFullYear();
     } catch (error) {
-      console.error(error);
+      console.error('boplog data load failed', error);
       elements.resultCount.textContent = 'load error';
       elements.archiveSummary.textContent = 'Unable to load project data';
-      elements.archive.innerHTML = '<p class="load-error">Project data could not be loaded.</p>';
+      elements.archive.innerHTML = '<p class="load-error">Project data could not be loaded. Refresh to retry.</p>';
       elements.featuredList.innerHTML = '<p class="load-error">Featured projects could not be loaded.</p>';
       elements.currentYear.textContent = new Date().getFullYear();
     }
