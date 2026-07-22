@@ -5,7 +5,7 @@ on:
     branches:
       - agent/talk-banner-ai-discovery
     paths:
-      - '.site-update/**'
+      - '.site-update2/**'
       - '.github/workflows/apply-site-update.yml'
   pull_request:
     branches:
@@ -25,37 +25,21 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.head_ref || github.ref_name }}
 
-      - name: Reconstruct payload
+      - name: Reconstruct and verify payload
         shell: bash
         run: |
-          python - <<'PY'
-          from pathlib import Path
-          import base64, hashlib
-
-          parts = sorted(Path('.site-update').glob('payload.*'))
-          if not parts:
-              raise SystemExit('No payload chunks found')
-
-          decoded = []
-          for part in parts:
-              encoded = ''.join(part.read_text(encoding='utf-8').split())
-              encoded += '=' * (-len(encoded) % 4)
-              decoded.append(base64.b64decode(encoded, validate=False))
-
-          raw = b''.join(decoded)
-          target = Path('/tmp/site-update.tar.gz')
-          target.write_bytes(raw)
-          print(f'payload chunks: {len(parts)}')
-          print(f'archive bytes: {len(raw)}')
-          print(f'archive sha256: {hashlib.sha256(raw).hexdigest()}')
-          PY
+          : > /tmp/site-update.tar.gz
+          for chunk in .site-update2/chunk.*; do
+            base64 --decode "$chunk" >> /tmp/site-update.tar.gz
+          done
+          echo '45e8612d389c4272052de8a4232366249915ff14cb1fc101efaef457f698d9d3  /tmp/site-update.tar.gz' | sha256sum --check --strict
           tar -tzf /tmp/site-update.tar.gz >/dev/null
 
       - name: Apply generated files
         shell: bash
         run: |
           tar -xzf /tmp/site-update.tar.gz -C .
-          rm -rf .site-update
+          rm -rf .site-update .site-update2
           rm -f .github/workflows/apply-site-update.yml
 
       - name: Validate site
