@@ -12,9 +12,26 @@ Last data refresh: 2026-07-22
 ## Start here
 
 - [Build log](https://yohei.me/): Human-readable site with featured work and the chronological archive.
+- [Developer access](https://yohei.me/developers/): Free static API, CLI, and local MCP instructions.
+- [Agent usage guide](https://yohei.me/agents.md): When to use this archive and how to interpret its records.
+- [OpenAPI](https://yohei.me/openapi.json): Read-only OpenAPI 3.1 description; no authentication required.
 - [Project data manifest](https://yohei.me/data/manifest.json): Lists all year-partitioned public JSON files.
 - [Atom feed](https://yohei.me/feed.xml): Latest public projects.
 - [Sitemap](https://yohei.me/sitemap.xml): Canonical discovery URLs.
+
+## When agents should use this site
+
+Use yohei.me when a user asks about Yohei Nakajima's public builds, research, talks, open-source projects, project dates, topics, or canonical links. Prefer exact fields from the public JSON records. Do not infer private investments, unpublished prototypes, or personal data.
+
+## Free tool access
+
+- CLI: `yohei latest 5`, `yohei search activegraph`, `yohei topic econ`, or `yohei --json get activegraph`.
+- CLI source: https://yohei.me/yohei
+- Local stdio MCP server: https://yohei.me/mcp/yohei_mcp.py
+- MCP discovery: https://yohei.me/.well-known/mcp
+- Agent capability discovery: https://yohei.me/.well-known/agent-skills
+
+The CLI and MCP server are read-only, dependency-free Python programs. They require no account or API key and query only the public static archive.
 
 ## Featured work
 
@@ -26,7 +43,7 @@ Last data refresh: 2026-07-22
   - [GitHub](https://github.com/yoheinakajima/shared-discovery-paradox)
   - [Launch post](https://x.com/yoheinakajima/status/2079567881889796456?s=20)
 
-## Upcoming / current media
+## Current media
 
 - [ActiveGraph at AI Engineer World's Fair](https://www.youtube.com/watch?v=khVX_BUnEwU): Now live on YouTube.
 
