@@ -17,3 +17,10 @@ jobs:
         with:
           node-version: 22
       - run: npm run check
+      - name: Validate agent interfaces
+        run: |
+          python3 -m py_compile yohei mcp/yohei_mcp.py
+          python3 -m json.tool openapi.json >/dev/null
+          python3 -m json.tool .well-known/agent-skills >/dev/null
+          python3 -m json.tool .well-known/mcp >/dev/null
+          sh -n skills.sh
