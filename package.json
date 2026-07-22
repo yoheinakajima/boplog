@@ -1,0 +1,15 @@
+{
+  "name": "boplog",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A static, data-driven build log for yohei.me",
+  "scripts": {
+    "serve": "python3 -m http.server 4173",
+    "validate": "node scripts/validate-data.mjs",
+    "lint": "node --check app.js && node --check scripts/validate-data.mjs",
+    "check": "npm run lint && npm run validate"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
