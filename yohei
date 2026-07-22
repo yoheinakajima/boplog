@@ -1,0 +1,107 @@
+#!/usr/bin/env python3
+"""Free, zero-dependency CLI for the public yohei.me build archive."""
+
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+import urllib.error
+import urllib.request
+from typing import Any
+
+BASE = "https://yohei.me"
+
+
+def fetch_json(path: str) -> dict[str, Any]:
+    request = urllib.request.Request(f"{BASE}/{path.lstrip('/')}", headers={"User-Agent": "yohei-cli/1.0"})
+    try:
+        with urllib.request.urlopen(request, timeout=15) as response:
+            return json.load(response)
+    except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as exc:
+        raise RuntimeError(f"Could not read {path}: {exc}") from exc
+
+
+def projects() -> list[dict[str, Any]]:
+    manifest = fetch_json("data/manifest.json")
+    result: list[dict[str, Any]] = []
+    for filename in manifest.get("files", []):
+        result.extend(fetch_json(f"data/{filename}").get("projects", []))
+    return sorted(result, key=lambda item: item.get("date", ""), reverse=True)
+
+
+def matches(item: dict[str, Any], query: str) -> bool:
+    text = " ".join([
+        str(item.get("name", "")),
+        str(item.get("displayName", "")),
+        str(item.get("description", "")),
+        *item.get("categories", []),
+        *item.get("formats", []),
+        *item.get("types", []),
+    ]).lower()
+    return query.lower() in text
+
+
+def print_rows(rows: list[dict[str, Any]], as_json: bool) -> None:
+    if as_json:
+        print(json.dumps(rows, indent=2, ensure_ascii=False))
+        return
+    if not rows:
+        print("No matching public builds.")
+        return
+    for item in rows:
+        tags = " ".join(f"#{tag.replace(' ', '-')}" for tag in item.get("categories", []))
+        print(f"{item.get('date', '')}  {item.get('displayName') or item.get('name', '')}")
+        print(f"  {item.get('description', '')}")
+        if tags:
+            print(f"  {tags}")
+        print(f"  {item.get('url', '')}")
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(prog="yohei", description="Query Yohei Nakajima's public build archive.")
+    parser.add_argument("--json", action="store_true", help="Output JSON")
+    sub = parser.add_subparsers(dest="command", required=True)
+
+    latest = sub.add_parser("latest", help="Show the latest public builds")
+    latest.add_argument("count", nargs="?", type=int, default=10)
+
+    search = sub.add_parser("search", help="Search names, descriptions, and tags")
+    search.add_argument("query")
+    search.add_argument("--limit", type=int, default=20)
+
+    by_date = sub.add_parser("date", help="Show builds from an exact YYYY-MM-DD date")
+    by_date.add_argument("value")
+
+    topic = sub.add_parser("topic", help="Show builds with an exact topic tag")
+    topic.add_argument("value")
+
+    get = sub.add_parser("get", help="Get one build by ID or exact name")
+    get.add_argument("value")
+
+    args = parser.parse_args()
+    try:
+        rows = projects()
+    except RuntimeError as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+
+    if args.command == "latest":
+        selected = rows[: max(0, args.count)]
+    elif args.command == "search":
+        selected = [item for item in rows if matches(item, args.query)][: max(0, args.limit)]
+    elif args.command == "date":
+        selected = [item for item in rows if item.get("date") == args.value]
+    elif args.command == "topic":
+        selected = [item for item in rows if args.value in item.get("categories", [])]
+    else:
+        needle = args.value.lower()
+        selected = [item for item in rows if item.get("id", "").lower() == needle or item.get("name", "").lower() == needle or item.get("displayName", "").lower() == needle]
+        selected = selected[:1]
+
+    print_rows(selected, args.json)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
