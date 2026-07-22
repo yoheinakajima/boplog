@@ -1,0 +1,13 @@
+{
+  "name": "yohei.me-public-builds",
+  "description": "Free, read-only MCP access to Yohei Nakajima's public build archive.",
+  "status": "available",
+  "transport": "stdio",
+  "remoteEndpoint": null,
+  "serverScript": "https://yohei.me/mcp/yohei_mcp.py",
+  "documentation": "https://yohei.me/developers/#mcp",
+  "authentication": "none",
+  "cost": "free",
+  "tools": ["latest_builds", "search_builds", "get_build"],
+  "note": "GitHub Pages cannot host a persistent MCP transport. This is a local stdio server that reads the public static API over HTTPS."
+}
