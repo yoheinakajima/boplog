@@ -1,0 +1,64 @@
+name: Refine ActiveGraph talk callout
+
+on:
+  push:
+    branches:
+      - agent/talk-banner-ai-discovery
+    paths:
+      - '.github/workflows/refine-talk-callout.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  refine:
+    if: github.event.head_commit.message == 'Stage ActiveGraph talk copy refinement'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/talk-banner-ai-discovery
+          fetch-depth: 0
+
+      - name: Update callout copy and metadata
+        shell: python
+        run: |
+          from pathlib import Path
+
+          replacements = {
+              "index.html": [
+                  ('<meta name="boplog-build" content="2026-07-22.3">', '<meta name="boplog-build" content="2026-07-22.4">'),
+                  ('./styles.css?v=20260722.3', './styles.css?v=20260722.4'),
+                  ('./app.js?v=20260722.3', './app.js?v=20260722.4'),
+                  ('"name": "Yohei Nakajima — AI Engineer talk premiere"', '"name": "ActiveGraph — live from AI Engineer World\'s Fair | Yohei Nakajima"'),
+                  ('"description": "A new AI Engineer talk from Yohei Nakajima, premiering online July 22, 2026 at 10:00 AM Pacific Time."', '"description": "Yohei Nakajima presents ActiveGraph live from AI Engineer World\'s Fair, streaming July 22, 2026 at 10:00 AM Pacific Time."'),
+                  ('          <h2 id="talk-title">New AI Engineer talk</h2>\n          <p>A new talk on building AI systems premieres on YouTube.</p>', '          <h2 id="talk-title">ActiveGraph — live from AI Engineer World\'s Fair</h2>'),
+              ],
+              "app.js": [
+                  ("const BUILD_VERSION = '20260722.3';", "const BUILD_VERSION = '20260722.4';"),
+              ],
+              "llms.txt": [
+                  ('- [AI Engineer talk](https://www.youtube.com/watch?v=khVX_BUnEwU): Premieres July 22, 2026 at 10:00 AM Pacific Time; the same URL becomes the recording after the premiere.', '- [ActiveGraph — live from AI Engineer World\'s Fair](https://www.youtube.com/watch?v=khVX_BUnEwU): Streams July 22, 2026 at 10:00 AM Pacific Time; the same URL becomes the recording afterward.'),
+              ],
+          }
+
+          for filename, pairs in replacements.items():
+              path = Path(filename)
+              text = path.read_text()
+              for old, new in pairs:
+                  if old not in text:
+                      raise SystemExit(f"Expected text not found in {filename}: {old}")
+                  text = text.replace(old, new, 1)
+              path.write_text(text)
+
+      - name: Validate
+        run: npm run check
+
+      - name: Commit update
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html app.js llms.txt
+          git commit -m 'Clarify ActiveGraph World’s Fair talk'
+          git push origin HEAD:agent/talk-banner-ai-discovery
