@@ -1,0 +1,53 @@
+# Yohei Nakajima — Build Log
+
+> A public, chronological archive of Yohei Nakajima's AI agents, open-source software, developer tools, venture experiments, economics research, art, and other builds.
+
+Canonical site: https://yohei.me/
+Author: Yohei Nakajima
+Language: English
+Public project count: 121
+Coverage: 2020–2026
+Last data refresh: 2026-07-22
+
+## Start here
+
+- [Build log](https://yohei.me/): Human-readable site with featured work and the chronological archive.
+- [Project data manifest](https://yohei.me/data/manifest.json): Lists all year-partitioned public JSON files.
+- [Atom feed](https://yohei.me/feed.xml): Latest public projects.
+- [Sitemap](https://yohei.me/sitemap.xml): Canonical discovery URLs.
+
+## Featured work
+
+- [ActiveGraph](https://activegraph.ai): Event-sourced reactive graph runtime for auditable, forkable, long-running agents.
+  - [Documentation](https://docs.activegraph.ai)
+  - [GitHub](https://github.com/yoheinakajima/activegraph)
+  - [Launch post](https://x.com/yoheinakajima/status/2057099245430222926)
+- [The Shared Discovery Paradox paper](https://arxiv.org/abs/2607.18045): A mathematical explanation of how information sharing without action coordination can worsen group outcomes.
+  - [GitHub](https://github.com/yoheinakajima/shared-discovery-paradox)
+  - [Launch post](https://x.com/yoheinakajima/status/2079567881889796456?s=20)
+
+## Upcoming / current media
+
+- [AI Engineer talk](https://www.youtube.com/watch?v=khVX_BUnEwU): Premieres July 22, 2026 at 10:00 AM Pacific Time; the same URL becomes the recording after the premiere.
+
+## Public project data
+
+Each JSON record contains an ID, name, short description, date, source URL, public type labels, formats, and categories. Featured records may also contain ranked resource links.
+
+- [2026 projects](https://yohei.me/data/projects-2026.json)
+- [2025 projects](https://yohei.me/data/projects-2025.json)
+- [2024 projects](https://yohei.me/data/projects-2024.json)
+- [2023 projects](https://yohei.me/data/projects-2023.json)
+- [2022 projects](https://yohei.me/data/projects-2022.json)
+- [2021 projects](https://yohei.me/data/projects-2021.json)
+- [2020 projects](https://yohei.me/data/projects-2020.json)
+
+## Identity and related links
+
+- [GitHub profile](https://github.com/yoheinakajima)
+- [X profile](https://x.com/yoheinakajima)
+- [Untapped Capital](https://untapped.vc)
+
+## Data policy
+
+Only Airtable records explicitly tagged public are included. Private records are excluded from the repository and browser payload. The checked-in JSON files are the canonical data source for this static site.

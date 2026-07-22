@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const BUILD_VERSION = '20260722.2';
+  const BUILD_VERSION = '20260722.3';
   const DATA_ROOT = new URL('./data/', document.baseURI);
   document.documentElement.dataset.build = BUILD_VERSION;
 
@@ -28,6 +28,12 @@
     randomBuild: document.querySelector('#random-build'),
     emptyState: document.querySelector('#empty-state'),
     currentYear: document.querySelector('#current-year'),
+    filterDisclosure: document.querySelector('#filter-disclosure'),
+    filterSummary: document.querySelector('#filter-summary'),
+    talkBanner: document.querySelector('#talk-banner'),
+    talkKicker: document.querySelector('#talk-kicker'),
+    talkCountdown: document.querySelector('#talk-countdown'),
+    talkLink: document.querySelector('#talk-link'),
   };
 
   const categoryLabels = {
@@ -35,6 +41,7 @@
     dev: 'dev',
     vc: 'VC',
     art: 'art',
+    econ: 'econ',
     'no code': 'no-code',
     web3: 'web3',
   };
@@ -162,6 +169,21 @@
       .join('');
   }
 
+  function activeFilterCount() {
+    return [
+      Boolean(state.query),
+      Boolean(state.category),
+      Boolean(state.format),
+      Boolean(state.year),
+      state.sort !== 'newest',
+    ].filter(Boolean).length;
+  }
+
+  function renderFilterSummary() {
+    const count = activeFilterCount();
+    elements.filterSummary.textContent = count ? `${count} active` : 'all projects';
+  }
+
   function readUrlState() {
     const params = new URLSearchParams(window.location.search);
     state.query = params.get('q') || '';
@@ -180,6 +202,7 @@
     state.format = elements.format.value;
     state.year = elements.year.value;
     state.sort = elements.sort.value || 'newest';
+    elements.filterDisclosure.open = activeFilterCount() > 0;
   }
 
   function writeUrlState() {
@@ -195,6 +218,7 @@
 
   function render() {
     renderArchive();
+    renderFilterSummary();
     writeUrlState();
   }
 
@@ -209,6 +233,7 @@
     elements.format.value = '';
     elements.year.value = '';
     elements.sort.value = 'newest';
+    elements.filterDisclosure.open = false;
     render();
   }
 
@@ -255,6 +280,7 @@
         state.format = value;
         elements.format.value = value;
       }
+      elements.filterDisclosure.open = true;
       render();
       document.querySelector('#archive-title').scrollIntoView({ block: 'start' });
     });
@@ -264,6 +290,7 @@
       const isEditing = ['INPUT', 'TEXTAREA', 'SELECT'].includes(tagName);
       if (event.key === '/' && !isEditing) {
         event.preventDefault();
+        elements.filterDisclosure.open = true;
         elements.search.focus();
       }
       if (event.key === 'Escape' && document.activeElement === elements.search && elements.search.value) {
@@ -272,6 +299,60 @@
         render();
       }
     });
+  }
+
+  function formatCountdown(milliseconds) {
+    const totalSeconds = Math.max(0, Math.floor(milliseconds / 1000));
+    const days = Math.floor(totalSeconds / 86400);
+    const hours = Math.floor((totalSeconds % 86400) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+    const parts = [];
+    if (days) parts.push(`${days}d`);
+    if (days || hours) parts.push(`${hours}h`);
+    parts.push(`${minutes}m`);
+    parts.push(`${seconds}s`);
+    return parts.join(' ');
+  }
+
+  function initTalkBanner() {
+    if (!elements.talkBanner) return;
+    const start = new Date(elements.talkBanner.dataset.start || '');
+    if (Number.isNaN(start.valueOf())) return;
+    const liveWindow = 6 * 60 * 60 * 1000;
+    let timer;
+
+    const update = () => {
+      const now = Date.now();
+      const untilStart = start.getTime() - now;
+      const sinceStart = now - start.getTime();
+
+      if (untilStart > 0) {
+        elements.talkBanner.classList.remove('is-live', 'is-available');
+        elements.talkKicker.textContent = 'premieres in';
+        elements.talkCountdown.textContent = formatCountdown(untilStart);
+        elements.talkLink.textContent = 'set reminder ↗';
+        return;
+      }
+
+      elements.talkCountdown.textContent = 'July 22, 2026 · 10:00 AM PT';
+      if (sinceStart <= liveWindow) {
+        elements.talkBanner.classList.add('is-live');
+        elements.talkBanner.classList.remove('is-available');
+        elements.talkKicker.textContent = 'live now';
+        elements.talkLink.textContent = 'watch live ↗';
+        return;
+      }
+
+      elements.talkBanner.classList.remove('is-live');
+      elements.talkBanner.classList.add('is-available');
+      elements.talkKicker.textContent = 'available now';
+      elements.talkLink.textContent = 'watch talk ↗';
+      if (timer) window.clearInterval(timer);
+    };
+
+    update();
+    timer = window.setInterval(update, 1000);
   }
 
   function versionedDataUrl(path, dataVersion = BUILD_VERSION) {
@@ -306,16 +387,14 @@
       renderFeatured();
       render();
       bindEvents();
-      elements.currentYear.textContent = new Date().getFullYear();
     } catch (error) {
       console.error('boplog data load failed', error);
-      elements.resultCount.textContent = 'load error';
-      elements.archiveSummary.textContent = 'Unable to load project data';
-      elements.archive.innerHTML = '<p class="load-error">Project data could not be loaded. Refresh to retry.</p>';
-      elements.featuredList.innerHTML = '<p class="load-error">Featured projects could not be loaded.</p>';
-      elements.currentYear.textContent = new Date().getFullYear();
+      elements.resultCount.textContent = 'latest 12 shown';
+      elements.archiveSummary.textContent = 'Static preview · machine-readable archive available below';
     }
   }
 
+  elements.currentYear.textContent = new Date().getFullYear();
+  initTalkBanner();
   loadProjects();
 })();
