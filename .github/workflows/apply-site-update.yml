@@ -7,18 +7,23 @@ on:
     paths:
       - '.site-update/**'
       - '.github/workflows/apply-site-update.yml'
+  pull_request:
+    branches:
+      - main
+    types: [opened, synchronize, reopened]
 
 permissions:
   contents: write
 
 jobs:
   apply:
-    if: github.event.head_commit.message != 'Apply generated site update'
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          ref: ${{ github.head_ref || github.ref_name }}
 
       - name: Reconstruct and verify payload
         shell: bash
@@ -43,4 +48,4 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -A
           git commit -m 'Apply generated site update'
-          git push origin HEAD:${GITHUB_REF_NAME}
+          git push origin HEAD:${{ github.head_ref || github.ref_name }}
