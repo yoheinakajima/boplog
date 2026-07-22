@@ -1,4 +1,4 @@
-name: Refine now-live talk banner
+name: Finalize now-live talk banner
 
 on:
   push:
@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   refine:
-    if: github.event.head_commit.message == 'Stage now-live talk banner refinement'
+    if: github.event.head_commit.message == 'Finalize static now-live talk tag'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -20,41 +20,65 @@ jobs:
           ref: agent/talk-banner-ai-discovery
           fetch-depth: 0
 
-      - name: Update banner wording and behavior
+      - name: Make now-live state permanent
         shell: python
         run: |
           from pathlib import Path
 
-          replacements = {
-              "index.html": [
-                  ('<meta name="boplog-build" content="2026-07-22.4">', '<meta name="boplog-build" content="2026-07-22.5">'),
-                  ('./styles.css?v=20260722.4', './styles.css?v=20260722.5'),
-                  ('./app.js?v=20260722.4', './app.js?v=20260722.5'),
-                  ('"name": "ActiveGraph — live from AI Engineer World\'s Fair | Yohei Nakajima"', '"name": "ActiveGraph at AI Engineer World\'s Fair | Yohei Nakajima"'),
-                  ('"description": "Yohei Nakajima presents ActiveGraph live from AI Engineer World\'s Fair, streaming July 22, 2026 at 10:00 AM Pacific Time."', '"description": "Yohei Nakajima\'s ActiveGraph talk from AI Engineer World\'s Fair, published online July 22, 2026 at 10:00 AM Pacific Time."'),
-                  ('<span id="talk-kicker" aria-live="polite">premieres soon</span>', '<span id="talk-kicker" aria-live="polite">now live</span>'),
-                  ('<h2 id="talk-title">ActiveGraph — live from AI Engineer World\'s Fair</h2>', '<h2 id="talk-title">ActiveGraph at AI Engineer World\'s Fair</h2>'),
-                  ('<span id="talk-countdown">calculating countdown…</span>', '<span id="talk-countdown">available on YouTube</span>'),
-                  ('>set reminder ↗</a>', '>watch talk ↗</a>'),
-              ],
-              "app.js": [
-                  ("const BUILD_VERSION = '20260722.4';", "const BUILD_VERSION = '20260722.5';"),
-                  ("elements.talkKicker.textContent = 'premieres in';", "elements.talkKicker.textContent = 'now live';"),
-                  ("elements.talkLink.textContent = 'set reminder ↗';", "elements.talkLink.textContent = 'watch talk ↗';"),
-              ],
-              "llms.txt": [
-                  ('- [ActiveGraph — live from AI Engineer World\'s Fair](https://www.youtube.com/watch?v=khVX_BUnEwU): Streams July 22, 2026 at 10:00 AM Pacific Time; the same URL becomes the recording afterward.', '- [ActiveGraph at AI Engineer World\'s Fair](https://www.youtube.com/watch?v=khVX_BUnEwU): Now available on YouTube; published July 22, 2026 at 10:00 AM Pacific Time.'),
-              ],
-          }
+          path = Path('app.js')
+          text = path.read_text()
+          old = '''  function initTalkBanner() {
+    if (!elements.talkBanner) return;
+    const start = new Date(elements.talkBanner.dataset.start || '');
+    if (Number.isNaN(start.valueOf())) return;
+    const liveWindow = 6 * 60 * 60 * 1000;
+    let timer;
 
-          for filename, pairs in replacements.items():
-              path = Path(filename)
-              text = path.read_text()
-              for old, new in pairs:
-                  if old not in text:
-                      raise SystemExit(f"Expected text not found in {filename}: {old}")
-                  text = text.replace(old, new, 1)
-              path.write_text(text)
+    const update = () => {
+      const now = Date.now();
+      const untilStart = start.getTime() - now;
+      const sinceStart = now - start.getTime();
+
+      if (untilStart > 0) {
+        elements.talkBanner.classList.remove('is-live', 'is-available');
+        elements.talkKicker.textContent = 'now live';
+        elements.talkCountdown.textContent = formatCountdown(untilStart);
+        elements.talkLink.textContent = 'watch talk ↗';
+        return;
+      }
+
+      elements.talkCountdown.textContent = 'July 22, 2026 · 10:00 AM PT';
+      if (sinceStart <= liveWindow) {
+        elements.talkBanner.classList.add('is-live');
+        elements.talkBanner.classList.remove('is-available');
+        elements.talkKicker.textContent = 'live now';
+        elements.talkLink.textContent = 'watch live ↗';
+        return;
+      }
+
+      elements.talkBanner.classList.remove('is-live');
+      elements.talkBanner.classList.add('is-available');
+      elements.talkKicker.textContent = 'available now';
+      elements.talkLink.textContent = 'watch talk ↗';
+      if (timer) window.clearInterval(timer);
+    };
+
+    update();
+    timer = window.setInterval(update, 1000);
+  }
+'''
+          new = '''  function initTalkBanner() {
+    if (!elements.talkBanner) return;
+    elements.talkBanner.classList.remove('is-live');
+    elements.talkBanner.classList.add('is-available');
+    elements.talkKicker.textContent = 'now live';
+    elements.talkCountdown.textContent = 'available on YouTube';
+    elements.talkLink.textContent = 'watch talk ↗';
+  }
+'''
+          if old not in text:
+              raise SystemExit('Expected countdown function was not found')
+          path.write_text(text.replace(old, new, 1))
 
       - name: Validate
         run: npm run check
@@ -64,6 +88,6 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add index.html app.js llms.txt
-          git commit -m 'Use now-live tag for ActiveGraph talk'
+          git add app.js
+          git commit -m 'Keep ActiveGraph talk tagged now live'
           git push origin HEAD:agent/talk-banner-ai-discovery
