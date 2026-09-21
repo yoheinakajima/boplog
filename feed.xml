@@ -5,8 +5,20 @@
   <id>https://yohei.me/</id>
   <link href="https://yohei.me/" rel="alternate"/>
   <link href="https://yohei.me/feed.xml" rel="self" type="application/atom+xml"/>
-  <updated>2026-08-13T00:00:00Z</updated>
+  <updated>2026-09-21T23:55:09Z</updated>
   <author><name>Yohei Nakajima</name><uri>https://yohei.me/</uri></author>
+  <entry>
+    <title>Glance VLM</title><id>https://x.com/yoheinakajima/status/2102088674699850107</id><link href="https://x.com/yoheinakajima/status/2102088674699850107?s=20"/><published>2026-09-21T00:00:00Z</published><updated>2026-09-21T00:00:00Z</updated><category term="ai"/><category term="dev"/><summary>An open-source Python harness that reads typed answers from a local vision-language model's logits and returns probabilities without generation.</summary>
+  </entry>
+  <entry>
+    <title>Beep with JEV</title><id>https://x.com/yoheinakajima/status/2100945960671326482</id><link href="https://x.com/yoheinakajima/status/2100945960671326482?s=20"/><published>2026-09-18T00:00:00Z</published><updated>2026-09-18T00:00:00Z</updated><category term="ai"/><category term="art"/><summary>An experiment giving JEV a way to express emotion and chat through audio beeps.</summary>
+  </entry>
+  <entry>
+    <title>JEV Graph Extraction</title><id>https://x.com/yoheinakajima/status/2100674306405814568</id><link href="https://x.com/yoheinakajima/status/2100674306405814568?s=20"/><published>2026-09-17T00:00:00Z</published><updated>2026-09-17T00:00:00Z</updated><category term="ai"/><summary>A JEV experiment that scores words for semantic significance, tags relevant words with IDs, and builds a graph from the highest-scoring words.</summary>
+  </entry>
+  <entry>
+    <title>Evaluator Bench</title><id>https://x.com/yoheinakajima/status/2100107968171987261</id><link href="https://x.com/yoheinakajima/status/2100107968171987261?s=20"/><published>2026-09-15T00:00:00Z</published><updated>2026-09-15T00:00:00Z</updated><category term="ai"/><category term="dev"/><summary>An evidence-linked research preview that scores the independence of third-party frontier AI evaluators under adjustable weights and evidence policies.</summary>
+  </entry>
   <entry>
     <title>Synthetic Players research</title><id>https://x.com/yoheinakajima/status/2087916158490223093</id><link href="https://x.com/yoheinakajima/status/2087916158490223093?s=20"/><published>2026-08-13T00:00:00Z</published><updated>2026-08-13T00:00:00Z</updated><category term="ai"/><category term="econ"/><summary>A paper and reproducible study asking whether a sixteen-persona LLM panel preserves treatment responses in repeated games, and showing that passing coarse marginal checks is cheap.</summary>
   </entry>
