@@ -25,7 +25,7 @@ The site is plain HTML, CSS, and JavaScript. There is no build step and no runti
 
 ## Project data
 
-The production site reads [`data/manifest.json`](data/manifest.json), which lists year-partitioned JSON files such as `data/projects-2026.json`. The current snapshot contains 126 public records exported through the connected Airtable account and committed directly to this repository.
+The production site reads [`data/manifest.json`](data/manifest.json), which lists year-partitioned JSON files such as `data/projects-2026.json`. The current snapshot contains 130 public records exported through the connected Airtable account and committed directly to this repository.
 
 Each project supports:
 

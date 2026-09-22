@@ -1,6 +1,46 @@
 {
   "projects": [
     {
+      "id": "glance-vlm",
+      "name": "Glance VLM",
+      "description": "An open-source Python harness that reads typed answers from a local vision-language model's logits and returns probabilities without generation.",
+      "date": "2026-09-21",
+      "url": "https://x.com/yoheinakajima/status/2102088674699850107?s=20",
+      "types": ["public", "py"],
+      "formats": [],
+      "categories": ["ai", "dev"]
+    },
+    {
+      "id": "beep-with-jev",
+      "name": "Beep with JEV",
+      "description": "An experiment giving JEV a way to express emotion and chat through audio beeps.",
+      "date": "2026-09-18",
+      "url": "https://x.com/yoheinakajima/status/2100945960671326482?s=20",
+      "types": ["public", "prototype"],
+      "formats": ["video"],
+      "categories": ["ai", "art"]
+    },
+    {
+      "id": "jev-graph-extraction",
+      "name": "JEV Graph Extraction",
+      "description": "A JEV experiment that scores words for semantic significance, tags relevant words with IDs, and builds a graph from the highest-scoring words.",
+      "date": "2026-09-17",
+      "url": "https://x.com/yoheinakajima/status/2100674306405814568?s=20",
+      "types": ["public", "prototype"],
+      "formats": ["video"],
+      "categories": ["ai"]
+    },
+    {
+      "id": "evaluator-bench",
+      "name": "Evaluator Bench",
+      "description": "An evidence-linked research preview that scores the independence of third-party frontier AI evaluators under adjustable weights and evidence policies.",
+      "date": "2026-09-15",
+      "url": "https://x.com/yoheinakajima/status/2100107968171987261?s=20",
+      "types": ["public", "py"],
+      "formats": [],
+      "categories": ["ai", "dev"]
+    },
+    {
       "id": "synthetic-players",
       "name": "Synthetic Players research",
       "description": "A paper and reproducible study asking whether a sixteen-persona LLM panel preserves treatment responses in repeated games, and showing that passing coarse marginal checks is cheap.",
