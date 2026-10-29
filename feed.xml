@@ -5,8 +5,32 @@
   <id>https://yohei.me/</id>
   <link href="https://yohei.me/" rel="alternate"/>
   <link href="https://yohei.me/feed.xml" rel="self" type="application/atom+xml"/>
-  <updated>2026-09-21T23:55:09Z</updated>
+  <updated>2026-10-29T23:17:54Z</updated>
   <author><name>Yohei Nakajima</name><uri>https://yohei.me/</uri></author>
+  <entry>
+    <title>Sloptoberfest: Hit Tweet and music-video thread</title><id>https://x.com/yoheinakajima/status/2115800939550662785</id><link href="https://x.com/yoheinakajima/status/2115800939550662785"/><published>2026-10-29T00:00:00Z</published><updated>2026-10-29T00:00:00Z</updated><category term="ai"/><category term="art"/><summary>A music-video thread opening with &quot;Hit Tweet,&quot; an electropop/dancepop experiment made with Suno and Slop Cannon, with an ASCII effect added through Codex.</summary>
+  </entry>
+  <entry>
+    <title>Unpolished Signals Matter More Now | Yohei Nakajima, Untapped Capital</title><id>https://blog.joinodin.com/p/unpolished-signals-matter-more-now</id><link href="https://blog.joinodin.com/p/unpolished-signals-matter-more-now"/><published>2026-10-18T00:00:00Z</published><updated>2026-10-18T00:00:00Z</updated><category term="ai"/><category term="vc"/><summary>On Odin&#x27;s Going Solo with Dan Gray: building in public, unpolished founder signals, the shared discovery paradox, and keeping investment decisions human.</summary>
+  </entry>
+  <entry>
+    <title>The Playbook That Writes Itself (and Other Ways VCs Are Putting AI Agents to Work)</title><id>https://venture5.com/the-playbook-that-writes-itself-and-other-ways-vcs-are-putting-ai-agents-to-work/</id><link href="https://venture5.com/the-playbook-that-writes-itself-and-other-ways-vcs-are-putting-ai-agents-to-work/"/><published>2026-10-14T00:00:00Z</published><updated>2026-10-14T00:00:00Z</updated><category term="ai"/><category term="vc"/><summary>A Venture5 event recording and article with Lindel Eakman and Carta&#x27;s Scarlett Pierce on agent workflows in venture, a playbook that proposes its own updates, and human decision-making.</summary>
+  </entry>
+  <entry>
+    <title>Soft-to-Rigid: Shape Continuation as an Alternative Search for Packing Congruent Shapes</title><id>https://arxiv.org/abs/2610.14463</id><link href="https://arxiv.org/abs/2610.14463"/><published>2026-10-10T00:00:00Z</published><updated>2026-10-10T00:00:00Z</updated><category term="dev"/><category term="math"/><summary>A controlled packing study across 188 instances: gradually hardening soft shapes finds packings rigid searches miss, but tuned rigid starts win more often overall. Every run is replayable.</summary>
+  </entry>
+  <entry>
+    <title>Twelve unit cubes in a cube (n=12)</title><id>https://yoheinakajima.github.io/soft-to-rigid-packing/</id><link href="https://yoheinakajima.github.io/soft-to-rigid-packing/"/><published>2026-10-08T00:00:00Z</published><updated>2026-10-08T00:00:00Z</updated><category term="dev"/><category term="math"/><summary>A packing of 12 unit cubes in a cube of side 2.9315185094797, found through soft-to-rigid search and checked with exact rational arithmetic. Listed in Friedman&#x27;s packing catalogue.</summary>
+  </entry>
+  <entry>
+    <title>n=12 cube packing: video announcement</title><id>https://x.com/yoheinakajima/status/2108234298835026024</id><link href="https://x.com/yoheinakajima/status/2108234298835026024"/><published>2026-10-08T00:00:00Z</published><updated>2026-10-08T00:00:00Z</updated><category term="dev"/><category term="math"/><summary>The October 8 video announcement and raw coordinates behind the separate 12-cube packing project. Novelty relative to Haowei Lin&#x27;s arrangement remains disputed.</summary>
+  </entry>
+  <entry>
+    <title>From BabyAGI to ActiveGraph: Why Long-Running Agents Need Logs, State, and Proof with Yohei Nakajima</title><id>https://podcasts.apple.com/us/podcast/from-babyagi-to-activegraph-why-long-running-agents/id1721516836?i=1000793660094</id><link href="https://podcasts.apple.com/us/podcast/from-babyagi-to-activegraph-why-long-running-agents/id1721516836?i=1000793660094"/><published>2026-10-07T00:00:00Z</published><updated>2026-10-07T00:00:00Z</updated><category term="ai"/><category term="dev"/><summary>On ODSC&#x27;s Ai X Podcast with Jerry Wolfe: the path from BabyAGI to ActiveGraph, durable agent state, auditable logs, and reproducible research.</summary>
+  </entry>
+  <entry>
+    <title>A sillier way to solve square packing</title><id>https://x.com/yoheinakajima/status/2107974815701426336</id><link href="https://x.com/yoheinakajima/status/2107974815701426336"/><published>2026-10-07T00:00:00Z</published><updated>2026-10-07T00:00:00Z</updated><category term="dev"/><category term="math"/><summary>The original video demonstration of soft-to-rigid square packing: 11 squares reached side 3.877 in about 3.75% of the reported runs. A demo preceding the separate controlled study, not a new square-packing record.</summary>
+  </entry>
   <entry>
     <title>Glance VLM</title><id>https://x.com/yoheinakajima/status/2102088674699850107</id><link href="https://x.com/yoheinakajima/status/2102088674699850107?s=20"/><published>2026-09-21T00:00:00Z</published><updated>2026-09-21T00:00:00Z</updated><category term="ai"/><category term="dev"/><summary>An open-source Python harness that reads typed answers from a local vision-language model's logits and returns probabilities without generation.</summary>
   </entry>
@@ -18,6 +42,9 @@
   </entry>
   <entry>
     <title>Evaluator Bench</title><id>https://x.com/yoheinakajima/status/2100107968171987261</id><link href="https://x.com/yoheinakajima/status/2100107968171987261?s=20"/><published>2026-09-15T00:00:00Z</published><updated>2026-09-15T00:00:00Z</updated><category term="ai"/><category term="dev"/><summary>An evidence-linked research preview that scores the independence of third-party frontier AI evaluators under adjustable weights and evidence policies.</summary>
+  </entry>
+  <entry>
+    <title>Did OpenAI Steal the Navier-Stokes Solution? | E2335</title><id>https://podcasts.apple.com/us/podcast/did-openai-steal-the-navier-stokes-solution-e2335/id315114957?i=1000788912170</id><link href="https://podcasts.apple.com/us/podcast/did-openai-steal-the-navier-stokes-solution-e2335/id315114957?i=1000788912170"/><published>2026-09-09T00:00:00Z</published><updated>2026-09-09T00:00:00Z</updated><category term="ai"/><category term="vc"/><summary>A This Week in Startups roundtable with Jason Calacanis, Lon Harris, Ben Lerer, and Rebecca Lynn on AI safety, proprietary data, open models, and investing.</summary>
   </entry>
   <entry>
     <title>Synthetic Players research</title><id>https://x.com/yoheinakajima/status/2087916158490223093</id><link href="https://x.com/yoheinakajima/status/2087916158490223093?s=20"/><published>2026-08-13T00:00:00Z</published><updated>2026-08-13T00:00:00Z</updated><category term="ai"/><category term="econ"/><summary>A paper and reproducible study asking whether a sixteen-persona LLM panel preserves treatment responses in repeated games, and showing that passing coarse marginal checks is cheap.</summary>
