@@ -5,9 +5,9 @@
 Canonical site: https://yohei.me/
 Author: Yohei Nakajima
 Language: English
-Public project count: 130
+Public project count: 139
 Coverage: 2020–2026
-Last data refresh: 2026-09-21
+Last data refresh: 2026-10-29
 
 ## Start here
 
@@ -43,9 +43,20 @@ The CLI and MCP server are read-only, dependency-free Python programs. They requ
   - [GitHub](https://github.com/yoheinakajima/shared-discovery-paradox)
   - [Launch post](https://x.com/yoheinakajima/status/2079567881889796456?s=20)
 
+- [Soft-to-Rigid paper](https://arxiv.org/abs/2610.14463): A controlled packing study; hardening reaches different packings, while tuned rigid starts win more often overall.
+  - [Replays and journal](https://yoheinakajima.github.io/soft-to-rigid/)
+  - [12-cube packing](https://yoheinakajima.github.io/soft-to-rigid-packing/)
+
 ## Current media
 
 - [ActiveGraph at AI Engineer World's Fair](https://www.youtube.com/watch?v=khVX_BUnEwU): Now live on YouTube.
+
+- [From BabyAGI to ActiveGraph: Why Long-Running Agents Need Logs, State, and Proof with Yohei Nakajima](https://podcasts.apple.com/us/podcast/from-babyagi-to-activegraph-why-long-running-agents/id1721516836?i=1000793660094): ODSC's Ai X Podcast, October 7, 2026.
+- [Did OpenAI Steal the Navier-Stokes Solution? | E2335](https://podcasts.apple.com/us/podcast/did-openai-steal-the-navier-stokes-solution-e2335/id315114957?i=1000788912170): This Week in Startups, September 9, 2026.
+
+- [Sloptoberfest: Hit Tweet and music-video thread](https://x.com/yoheinakajima/status/2115800939550662785): 2026-10-29.
+- [Unpolished Signals Matter More Now | Yohei Nakajima, Untapped Capital](https://blog.joinodin.com/p/unpolished-signals-matter-more-now): 2026-10-18.
+- [The Playbook That Writes Itself (and Other Ways VCs Are Putting AI Agents to Work)](https://venture5.com/the-playbook-that-writes-itself-and-other-ways-vcs-are-putting-ai-agents-to-work/): 2026-10-14.
 
 ## Public project data
 
@@ -67,4 +78,4 @@ Each JSON record contains an ID, name, short description, date, source URL, publ
 
 ## Data policy
 
-Only Airtable records explicitly tagged public are included. Private records are excluded from the repository and browser payload. The checked-in JSON files are the canonical data source for this static site.
+Only records explicitly tagged public are included. The Airtable snapshot is supplemented by verified public research, social artifacts, and media sources. Private records are excluded from the repository and browser payload. The checked-in JSON files are the canonical data source for this static site.
