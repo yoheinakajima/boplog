@@ -5,8 +5,14 @@
   <id>https://yohei.me/</id>
   <link href="https://yohei.me/" rel="alternate"/>
   <link href="https://yohei.me/feed.xml" rel="self" type="application/atom+xml"/>
-  <updated>2026-10-29T23:17:54Z</updated>
+  <updated>2026-11-26T02:49:48Z</updated>
   <author><name>Yohei Nakajima</name><uri>https://yohei.me/</uri></author>
+  <entry>
+    <title>SimGrammar: The Grammar of Simulation</title><id>https://simgrammar.com/</id><link href="https://simgrammar.com/"/><published>2026-11-20T00:00:00Z</published><updated>2026-11-20T00:00:00Z</updated><category term="ai"/><category term="dev"/><summary>An atlas of 179 simulation games, 199 mechanics, and 46 techniques that could change how games play. Made with Pedro Lucca and Shrey Kothari.</summary>
+  </entry>
+  <entry>
+    <title>BabyAGI Inside</title><id>https://github.com/yoheinakajima/babyagi-inside</id><link href="https://github.com/yoheinakajima/babyagi-inside"/><published>2026-11-05T00:00:00Z</published><updated>2026-11-05T00:00:00Z</updated><category term="ai"/><category term="dev"/><summary>A systems experiment that builds a bounded BabyAGI-style loop into Qwen’s weights. The controller ran as designed in the archived tests, while structured planning remained unreliable.</summary>
+  </entry>
   <entry>
     <title>Sloptoberfest: Hit Tweet and music-video thread</title><id>https://x.com/yoheinakajima/status/2115800939550662785</id><link href="https://x.com/yoheinakajima/status/2115800939550662785"/><published>2026-10-29T00:00:00Z</published><updated>2026-10-29T00:00:00Z</updated><category term="ai"/><category term="art"/><summary>A music-video thread opening with &quot;Hit Tweet,&quot; an electropop/dancepop experiment made with Suno and Slop Cannon, with an ASCII effect added through Codex.</summary>
   </entry>

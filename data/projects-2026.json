@@ -1,6 +1,36 @@
 {
   "projects": [
     {
+      "id": "simgrammar",
+      "name": "SimGrammar: The Grammar of Simulation",
+      "description": "An atlas of 179 simulation games, 199 mechanics, and 46 techniques that could change how games play. Made with Pedro Lucca and Shrey Kothari.",
+      "date": "2026-11-20",
+      "url": "https://simgrammar.com/",
+      "types": ["public"],
+      "formats": ["paper", "book", "video"],
+      "categories": ["ai", "dev"],
+      "displayName": "SimGrammar",
+      "featured": true,
+      "featuredRank": 3,
+      "eyebrow": "Simulation games research",
+      "links": [
+        {"label": "Paper", "url": "https://simgrammar.com/paper/"},
+        {"label": "Book", "url": "https://simgrammar.com/book/"},
+        {"label": "Watch", "url": "https://simgrammar.com/watch/"},
+        {"label": "Launch post", "url": "https://x.com/yoheinakajima/status/2123883634411376870"}
+      ]
+    },
+    {
+      "id": "babyagi-inside",
+      "name": "BabyAGI Inside",
+      "description": "A systems experiment that builds a bounded BabyAGI-style loop into Qwen’s weights. The controller ran as designed in the archived tests, while structured planning remained unreliable.",
+      "date": "2026-11-05",
+      "url": "https://github.com/yoheinakajima/babyagi-inside",
+      "types": ["public"],
+      "formats": ["paper"],
+      "categories": ["ai", "dev"]
+    },
+    {
       "id": "sloptoberfest-music-video-thread",
       "name": "Sloptoberfest: Hit Tweet and music-video thread",
       "description": "A music-video thread opening with \"Hit Tweet,\" an electropop/dancepop experiment made with Suno and Slop Cannon, with an ASCII effect added through Codex.",
@@ -41,8 +71,6 @@
       "formats": ["paper"],
       "categories": ["dev", "math"],
       "eyebrow": "Packing research",
-      "featured": true,
-      "featuredRank": 3,
       "links": [
         {"label": "Read the paper", "url": "https://arxiv.org/abs/2610.14463"},
         {"label": "Explore replays", "url": "https://yoheinakajima.github.io/soft-to-rigid/"},
