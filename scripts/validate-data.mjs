@@ -24,6 +24,10 @@ if (!Array.isArray(payload.projects)) {
     ids.add(project.id);
     if (!/^\d{4}-\d{2}-\d{2}$/.test(project.date)) errors.push(`${prefix}.date must use YYYY-MM-DD`);
     if (!/^https:\/\//.test(project.url)) errors.push(`${prefix}.url must be HTTPS`);
+    if (project.announcementUrl !== undefined &&
+        (typeof project.announcementUrl !== 'string' || !/^https:\/\/x\.com\/[a-zA-Z0-9_]{1,15}\/status\/\d+$/.test(project.announcementUrl))) {
+      errors.push(`${prefix}.announcementUrl must be a direct HTTPS link to an X post`);
+    }
     if (!Array.isArray(project.types) || !project.types.includes('public')) errors.push(`${prefix} is not explicitly public`);
     for (const field of ['types', 'formats', 'categories']) {
       if (!Array.isArray(project[field])) errors.push(`${prefix}.${field} must be an array`);
