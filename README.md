@@ -25,7 +25,7 @@ The site is plain HTML, CSS, and JavaScript. There is no build step and no runti
 
 ## Project data
 
-The production site reads [`data/manifest.json`](data/manifest.json), which lists year-partitioned JSON files such as `data/projects-2026.json`. The current snapshot contains 139 public records: 130 from the connected Airtable account and nine additions verified against public research, social artifacts, and media sources. All records are committed directly to this repository.
+The production site reads [`data/manifest.json`](data/manifest.json), which lists year-partitioned JSON files such as `data/projects-2026.json`. The current snapshot contains 141 public records: 130 from the connected Airtable account and eleven additions verified against public research, social artifacts, and media sources. All records are committed directly to this repository.
 
 Each project supports:
 
@@ -76,7 +76,7 @@ The controlled study and the earlier 12-cube result are separate entries. The st
 
 The initial October 22 public-source check identified ODSC Ai X and This Week in Startups; this batch also includes the later Odin episode and Venture5 event supplied by the owner. The 2026 IBM BabyAGI explainer is not a guest appearance; Zypsy's Frameless interview was published in August 2025. This is a bounded public-source check, not a claim of exhaustive podcast coverage.
 
-The paper uses the third existing featured slot. The archive keeps its text-row design, with links to the interactive packing replays and podcast players rather than new embedded media. Existing records and featured ranks are preserved. Future snapshot refreshes must retain these nine manually sourced records, their public labels and featured metadata.
+The paper uses the third existing featured slot. The archive keeps its text-row design, with links to the interactive packing replays and podcast players rather than new embedded media. Existing records and featured ranks are preserved. Future snapshot refreshes must retain the manually sourced records, their public labels and featured metadata.
 
 ### Social and media expansion, October 29
 
@@ -93,3 +93,12 @@ The music thread is public and dated October 29, 2026 at 13:40 UTC. Its opening 
 The two widely shared packing videos are an October 7 **square** demonstration and an October 8 **cube** announcement (each displayed more than a million views when checked). They are explicitly labeled social artifacts, separate from the controlled paper and the certified project release. The cube post is not mislabeled as a second square result, and its historic record wording is not adopted as a fresh novelty claim. No additional distinct viral square-only post was verified in the public search.
 
 Venture5's canonical URL excludes tracking parameters. Its visible publication date is October 14; the machine timestamp is October 15 at 01:10 UTC, also October 14 in Pacific time. It is an event recording and article, not relabeled as a podcast. Odin is Going Solo with Dan Gray, published October 18.
+
+### November 2026 additions
+
+| Record | Date | Date source |
+| --- | --- | --- |
+| SimGrammar: The Grammar of Simulation | 2026-11-20 | [Public announcement](https://x.com/yoheinakajima/status/2123883634411376870) |
+| BabyAGI Inside | 2026-11-05 | [First public Zenodo version](https://zenodo.org/records/23966217) |
+
+SimGrammar is featured and its paper, book, and videos share one entry. Soft-to-Rigid remains in the archive. BabyAGI Inside links to its source repository and is dated to the first public preprint.

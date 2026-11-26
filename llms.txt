@@ -5,9 +5,9 @@
 Canonical site: https://yohei.me/
 Author: Yohei Nakajima
 Language: English
-Public project count: 139
+Public project count: 141
 Coverage: 2020–2026
-Last data refresh: 2026-10-29
+Last data refresh: 2026-11-26
 
 ## Start here
 
@@ -43,9 +43,15 @@ The CLI and MCP server are read-only, dependency-free Python programs. They requ
   - [GitHub](https://github.com/yoheinakajima/shared-discovery-paradox)
   - [Launch post](https://x.com/yoheinakajima/status/2079567881889796456?s=20)
 
-- [Soft-to-Rigid paper](https://arxiv.org/abs/2610.14463): A controlled packing study; hardening reaches different packings, while tuned rigid starts win more often overall.
-  - [Replays and journal](https://yoheinakajima.github.io/soft-to-rigid/)
-  - [12-cube packing](https://yoheinakajima.github.io/soft-to-rigid-packing/)
+- [SimGrammar](https://simgrammar.com/): An atlas of simulation games, their mechanics, and techniques that could change how games play. Made with Pedro Lucca and Shrey Kothari.
+  - [Paper](https://simgrammar.com/paper/)
+  - [Book](https://simgrammar.com/book/)
+  - [Videos](https://simgrammar.com/watch/)
+
+## Recent research
+
+- [BabyAGI Inside](https://github.com/yoheinakajima/babyagi-inside): A bounded agent loop compiled into Qwen weights. The systems checks passed on the archived runs, while structured planning remained unreliable.
+- [Soft-to-Rigid](https://arxiv.org/abs/2610.14463): A controlled packing study with [replayable experiments](https://yoheinakajima.github.io/soft-to-rigid/).
 
 ## Current media
 
