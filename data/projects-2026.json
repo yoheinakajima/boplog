@@ -6,6 +6,7 @@
       "description": "An atlas of 179 simulation games, 199 mechanics, and 46 techniques that could change how games play. Made with Pedro Lucca and Shrey Kothari.",
       "date": "2026-11-20",
       "url": "https://simgrammar.com/",
+      "announcementUrl": "https://x.com/yoheinakajima/status/2123883634411376870",
       "types": ["public"],
       "formats": ["paper", "book", "video"],
       "categories": ["ai", "dev"],
@@ -16,8 +17,7 @@
       "links": [
         {"label": "Paper", "url": "https://simgrammar.com/paper/"},
         {"label": "Book", "url": "https://simgrammar.com/book/"},
-        {"label": "Watch", "url": "https://simgrammar.com/watch/"},
-        {"label": "Launch post", "url": "https://x.com/yoheinakajima/status/2123883634411376870"}
+        {"label": "Watch", "url": "https://simgrammar.com/watch/"}
       ]
     },
     {
@@ -26,6 +26,7 @@
       "description": "A systems experiment that builds a bounded BabyAGI-style loop into Qwen’s weights. The controller ran as designed in the archived tests, while structured planning remained unreliable.",
       "date": "2026-11-05",
       "url": "https://github.com/yoheinakajima/babyagi-inside",
+      "announcementUrl": "https://x.com/yoheinakajima/status/2118134446947971336",
       "types": ["public"],
       "formats": ["paper"],
       "categories": ["ai", "dev"]
@@ -67,6 +68,7 @@
       "description": "A controlled packing study across 188 instances: gradually hardening soft shapes finds packings rigid searches miss, but tuned rigid starts win more often overall. Every run is replayable.",
       "date": "2026-10-10",
       "url": "https://arxiv.org/abs/2610.14463",
+      "announcementUrl": "https://x.com/yoheinakajima/status/2110858439283134899",
       "types": ["public"],
       "formats": ["paper"],
       "categories": ["dev", "math"],
@@ -94,6 +96,7 @@
       "description": "A packing of 12 unit cubes in a cube of side 2.9315185094797, found through soft-to-rigid search and checked with exact rational arithmetic. Listed in Friedman's packing catalogue.",
       "date": "2026-10-08",
       "url": "https://yoheinakajima.github.io/soft-to-rigid-packing/",
+      "announcementUrl": "https://x.com/yoheinakajima/status/2108234298835026024",
       "types": ["public"],
       "formats": ["paper"],
       "categories": ["dev", "math"]

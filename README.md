@@ -46,6 +46,8 @@ Each project supports:
 
 Set `featured: true` on one to three projects. `featuredRank` controls their order. Optional featured-only fields include `displayName`, `eyebrow`, and `links`.
 
+Use the optional `announcementUrl` for a verified X announcement alongside the canonical project link. The archive and featured rows display it when present.
+
 ### Updating the snapshot
 
 No Airtable token setup is required. Data refreshes are explicit repository updates:
@@ -99,6 +101,6 @@ Venture5's canonical URL excludes tracking parameters. Its visible publication d
 | Record | Date | Date source |
 | --- | --- | --- |
 | SimGrammar: The Grammar of Simulation | 2026-11-20 | [Public announcement](https://x.com/yoheinakajima/status/2123883634411376870) |
-| BabyAGI Inside | 2026-11-05 | [First public Zenodo version](https://zenodo.org/records/23966217) |
+| BabyAGI Inside | 2026-11-05 | [First public Zenodo version](https://zenodo.org/records/23966217), [public announcement](https://x.com/yoheinakajima/status/2118134446947971336) |
 
 SimGrammar is featured and its paper, book, and videos share one entry. Soft-to-Rigid remains in the archive. BabyAGI Inside links to its source repository and is dated to the first public preprint.

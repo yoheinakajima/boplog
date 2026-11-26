@@ -27,4 +27,6 @@ Do not infer private investments, private prototypes, personal records, or unpub
 
 Each project record contains `id`, `name`, `description`, `date`, `url`, `types`, `formats`, and `categories`. Featured records may also include `featured`, `featuredRank`, `eyebrow`, and `links`.
 
+Set `announcementUrl` to the direct X post when a verified announcement accompanies a separate project URL.
+
 Prefer exact record fields over guessing. Cite or link the record's `url` when presenting a specific project.

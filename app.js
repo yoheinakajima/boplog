@@ -85,6 +85,12 @@
     });
   }
 
+  function renderAnnouncement(project) {
+    if (!project.announcementUrl || project.announcementUrl === project.url) return '';
+    const name = project.displayName || project.name;
+    return `<a class="project-announcement" href="${escapeHtml(project.announcementUrl)}" target="_blank" rel="noreferrer" aria-label="X announcement for ${escapeHtml(name)}">X announcement <span aria-hidden="true">↗</span></a>`;
+  }
+
   function renderFeatured() {
     const featured = state.projects
       .filter((project) => project.featured)
@@ -111,7 +117,7 @@
               <time datetime="${escapeHtml(project.date)}">${escapeHtml(project.date)}</time>
             </div>
             <p>${escapeHtml(project.description)}</p>
-            <div class="featured-item__meta">${eyebrow}${linkHtml}</div>
+            <div class="featured-item__meta">${eyebrow}${linkHtml}${renderAnnouncement(project)}</div>
           </div>
         </article>`;
     }).join('');
@@ -205,6 +211,7 @@
           <div class="project-row__main">
             <h3><a href="${escapeHtml(project.url)}" target="_blank" rel="noreferrer">${escapeHtml(project.name)} <span aria-hidden="true">↗</span></a></h3>
             <p>${escapeHtml(project.description)}</p>
+            ${renderAnnouncement(project)}
           </div>
           <div class="project-row__tags">${[...categoryTags, ...formatTags, ...typeTags].join('')}</div>
         </article>`;
